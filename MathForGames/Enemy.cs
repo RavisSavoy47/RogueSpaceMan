@@ -35,7 +35,7 @@ namespace MathForGames
             _maxViewAngle = maxViewAngle;
         }
 
-        public override void Update(float deltaTime)
+        public override void Update(float deltaTime, Scene currentScene)
         {
             //Create a vector that stores the move input
             Vector2 moveDirection = (_target.Position - Position).Normalized;
@@ -47,7 +47,7 @@ namespace MathForGames
 
             
 
-            base.Update(deltaTime);
+            base.Update(deltaTime, currentScene);
         }
 
         /// <summary>

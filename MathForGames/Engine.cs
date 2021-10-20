@@ -28,7 +28,7 @@ namespace MathForGames
             float deltaTime = 0;
 
             //loop until the application is told to close
-            while(!_applicationShouldClose && !Raylib.WindowShouldClose())
+            while (!_applicationShouldClose && !Raylib.WindowShouldClose())
             {
                 //Get how much time has passed since the application started 
                 currentTime = _stopwatch.ElapsedMilliseconds / 1000.0f;
@@ -61,12 +61,12 @@ namespace MathForGames
             Raylib.SetTargetFPS(60);
 
             Scene scene = new Scene();                      
-            Player player = new Player('@', 10, 20, 200, Color.VIOLET, "Player");
+            Player player = new Player('@', 350, 400, 200, Color.VIOLET, "Player");
             player.CollisionRadius = 20;
-            Enemy actor = new Enemy('E', 300, 20, 100, 100, 1, player, Color.YELLOW, "Enemy");
+            Enemy actor = new Enemy('E', 350, 10, 100, 100, 1, player, Color.YELLOW, "Enemy");
             actor.CollisionRadius = 20;
             //Ui section
-            UIText text = new UIText(200, 200, "TestTextBox", Color.BLACK, 70, 70, 15, "This world is not real....");
+            UIText text = new UIText(200, 200, "TestTextBox", Color.BLACK, 70, 70, 15, "Health: ");
 
             scene.AddUIElement(text);
 
@@ -83,7 +83,7 @@ namespace MathForGames
         private void Update(float deltaTime)
         {
             _scenes[_currentSceneIndex].Update(deltaTime);
-            _scenes[_currentSceneIndex].UpdateUI(deltaTime);
+            _scenes[_currentSceneIndex].UpdateUI(deltaTime, currentScene);
 
             while (Console.KeyAvailable)
                 Console.ReadKey(true);
