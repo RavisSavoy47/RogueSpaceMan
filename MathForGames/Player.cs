@@ -36,6 +36,12 @@ namespace MathForGames
             int yDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
 
+            int bulletDirectionX = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_A))
+                + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_D));
+            int bulletDirectionY = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
+                + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
+
+
             if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_UP)))
             {
                 Bullet bullet = new Bullet('.', Position.X, Position.Y, 0, -1, 100, Color.RED, "Bullet");
@@ -77,6 +83,7 @@ namespace MathForGames
         public override void Draw()
         {
             base.Draw();
+
         }
 
         public override void OnCollision(Actor actor, Scene currentScene)
