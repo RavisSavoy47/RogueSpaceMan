@@ -36,13 +36,35 @@ namespace MathForGames
             int yDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
 
-            if(Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_SPACE)))
+            if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_UP)))
             {
-                Bullet bullet = new Bullet('.', Position.X, Position.Y, 1, Color.RED, "Bullet");
+                Bullet bullet = new Bullet('.', Position.X, Position.Y, 0, -1, 100, Color.RED, "Bullet");
                 currentScene.AddActor(bullet);
+                bullet.CollisionRadius = 5;
             }
 
+            if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_DOWN)))
+            {
+                Bullet bullet = new Bullet('.', Position.X, Position.Y, 0, 1, 100, Color.RED, "Bullet");
+                currentScene.AddActor(bullet);
+                bullet.CollisionRadius = 5;
+            }
 
+            if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_LEFT)))
+            {
+                Bullet bullet = new Bullet('.', Position.X, Position.Y, -1, 0, 100, Color.RED, "Bullet");
+                currentScene.AddActor(bullet);
+                bullet.CollisionRadius = 5;
+            }
+
+            if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_RIGHT)))
+            {
+                Bullet bullet = new Bullet('.', Position.X, Position.Y, 1, 0, 100, Color.RED, "Bullet");
+                currentScene.AddActor(bullet);
+                bullet.CollisionRadius = 5;
+            }
+
+            //PLayer movement
             Vector2 moveDirection = new Vector2(xDirection, yDirection);
 
             Velocity = moveDirection.Normalized * Speed * deltaTime;
@@ -57,7 +79,7 @@ namespace MathForGames
             base.Draw();
         }
 
-        public override void OnCollision(Actor actor)
+        public override void OnCollision(Actor actor, Scene currentScene)
         {
             if (actor is Enemy)
                 Engine.CloseApplication();

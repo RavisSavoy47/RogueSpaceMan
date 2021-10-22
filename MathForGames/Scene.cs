@@ -32,32 +32,32 @@ namespace MathForGames
         /// <summary>
         /// Calls update for every actor in the scene. Calls start for the actor if it hasn't been called.
         /// </summary>
-        public virtual void Update(float deltaTime)
+        public virtual void Update(float deltaTime, Scene currentScene)
         {
             for (int i = 0; i < _actors.Length; i++)
             {
                 if (!_actors[i].Started)
                     _actors[i].Start();
 
-                _actors[i].Update(deltaTime);
+                _actors[i].Update(deltaTime, currentScene);
 
                 //Check for collision
                 for (int j = 0; j < _actors.Length; j++)
                 {
                     if (_actors[i].CheckForCollision(_actors[j]) && j != i)
-                        _actors[i].OnCollision(_actors[j]);
+                        _actors[i].OnCollision(_actors[j], currentScene);
                 }
             }
         }
 
-        public virtual void UpdateUI(float deltatTime)
+        public virtual void UpdateUI(float deltatTime, Scene currentScene)
         {
             for (int i = 0; i < _UIElements.Length; i++)
             {
                 if (!_UIElements[i].Started)
                     _UIElements[i].Start();
 
-                _UIElements[i].Update(deltatTime);
+                _UIElements[i].Update(deltatTime, currentScene);
             }
         }
 
@@ -73,6 +73,7 @@ namespace MathForGames
         {
             for (int i = 0; i < _actors.Length; i++)
             {
+
                 _actors[i].Draw();
             }
         }
@@ -172,7 +173,7 @@ namespace MathForGames
         /// <summary>
         /// Removes the actor from the scene
         /// </summary>
-        /// <param name="actor">Teh actor to remove</param>
+        /// <param name="actor">The actor to remove</param>
         /// <returns>False if the actor was not in the scene array</returns>
         public virtual bool RemoveActor(Actor actor)
         {
@@ -184,7 +185,7 @@ namespace MathForGames
 
             //Copy all values except the actor we dont want into the new array
             int j = 0;
-            for (int i = 0; i < tempArray.Length; i++)
+            for (int i = 0; i < _actors.Length; i++)
             {
                 //If the actor that the loop is on is not the temp array counter
                 if (_actors[i] != actor)

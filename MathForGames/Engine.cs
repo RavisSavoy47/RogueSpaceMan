@@ -64,7 +64,7 @@ namespace MathForGames
             Player player = new Player('@', 350, 400, 200, Color.VIOLET, "Player");
             player.CollisionRadius = 20;
             Enemy actor = new Enemy('E', 350, 10, 100, 100, 1, player, Color.YELLOW, "Enemy");
-            actor.CollisionRadius = 20;
+            actor.CollisionRadius = 10;
             //Ui section
             UIText text = new UIText(200, 200, "TestTextBox", Color.BLACK, 70, 70, 15, "Health: ");
 
@@ -82,8 +82,8 @@ namespace MathForGames
         /// </summary>
         private void Update(float deltaTime)
         {
-            _scenes[_currentSceneIndex].Update(deltaTime);
-            _scenes[_currentSceneIndex].UpdateUI(deltaTime, currentScene);
+            _scenes[_currentSceneIndex].Update(deltaTime, _scenes[_currentSceneIndex]);
+            _scenes[_currentSceneIndex].UpdateUI(deltaTime, _scenes[_currentSceneIndex]);
 
             while (Console.KeyAvailable)
                 Console.ReadKey(true);

@@ -23,14 +23,23 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Bullet(char icon, float x, float y, float speed, Color color, string name = "Bullet")
+        public Bullet(char icon, float x, float y, float velocityX, float velocityY, float speed, Color color, string name = "Bullet")
             : base(icon, x, y, color, name)
         {
+            _velocity.X = velocityX;
+            _velocity.Y = velocityY;
             _speed = speed;
         }
 
         public override void Update(float deltaTime, Scene currentScene)
         {
+            
+
+            Vector2 moveDirection = new Vector2 (_velocity.X, _velocity.Y);
+
+            Velocity = moveDirection.Normalized * Speed * deltaTime;
+
+            Position += Velocity;
 
             base.Update(deltaTime, currentScene);
         }
@@ -40,10 +49,10 @@ namespace MathForGames
             base.Draw();
         }
 
-        public override void OnCollision(Actor actor)
+        public override void OnCollision(Actor actor, Scene currentScene)
         {
             if (actor is Enemy)
-                Engine.CloseApplication();
+                currentScene.RemoveActor(actor);
         }
     }
 }

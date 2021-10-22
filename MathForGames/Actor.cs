@@ -84,7 +84,7 @@ namespace MathForGames
 
         }
 
-        public virtual void OnCollision(Actor actor)
+        public virtual void OnCollision(Actor actor, Scene currentScene)
         {
 
         }

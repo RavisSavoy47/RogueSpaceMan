@@ -67,7 +67,7 @@ namespace MathForGames
 
         }
 
-        public override void OnCollision(Actor actor)
+        public override void OnCollision(Actor actor, Scene currentScene)
         {
             Console.WriteLine("Collision Occurred");
         }
