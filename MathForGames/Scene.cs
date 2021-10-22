@@ -34,6 +34,8 @@ namespace MathForGames
         /// </summary>
         public virtual void Update(float deltaTime, Scene currentScene)
         {
+           
+
             for (int i = 0; i < _actors.Length; i++)
             {
                 if (!_actors[i].Started)
