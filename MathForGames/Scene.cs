@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Raylib_cs;
 
 namespace MathForGames
 {
@@ -11,6 +12,8 @@ namespace MathForGames
         /// </summary>
         private Actor[] _actors;
         private Actor[] _UIElements;
+        private bool _areAllEnemiesDead = false;
+        private bool _victoryMessage;
 
         public Scene()
         {
@@ -34,7 +37,7 @@ namespace MathForGames
         /// </summary>
         public virtual void Update(float deltaTime, Scene currentScene)
         {
-           
+            _victoryMessage = false;
 
             for (int i = 0; i < _actors.Length; i++)
             {
@@ -49,6 +52,14 @@ namespace MathForGames
                     if (_actors[i].CheckForCollision(_actors[j]) && j != i)
                         _actors[i].OnCollision(_actors[j], currentScene);
                 }
+            }
+
+            if (_areAllEnemiesDead && _victoryMessage)
+            {
+                UIText win = new UIText(200, 100, "WinBox", Color.BLACK, 70, 70, 15, "You Have Won!!!");
+                currentScene.AddUIElement(win);
+                _victoryMessage = true;
+
             }
         }
 

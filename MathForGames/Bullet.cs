@@ -46,7 +46,8 @@ namespace MathForGames
 
         public override void Draw()
         {
-            base.Draw();
+            Raylib.DrawText(Icon.Symbol.ToString(), (int)Position.X - 3, (int)Position.Y - 38, 50, Icon.Color);
+            Raylib.DrawCircleLines((int)Position.X, (int)Position.Y, 15, Color.BLACK);
         }
 
         public override void OnCollision(Actor actor, Scene currentScene)

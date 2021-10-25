@@ -46,28 +46,28 @@ namespace MathForGames
             {
                 Bullet bullet = new Bullet('.', Position.X, Position.Y, 0, -1, 100, Color.RED, "Bullet");
                 currentScene.AddActor(bullet);
-                bullet.CollisionRadius = 5;
+                bullet.CollisionRadius = 10;
             }
 
             if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_DOWN)))
             {
                 Bullet bullet = new Bullet('.', Position.X, Position.Y, 0, 1, 100, Color.RED, "Bullet");
                 currentScene.AddActor(bullet);
-                bullet.CollisionRadius = 5;
+                bullet.CollisionRadius = 10;
             }
 
             if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_LEFT)))
             {
                 Bullet bullet = new Bullet('.', Position.X, Position.Y, -1, 0, 100, Color.RED, "Bullet");
                 currentScene.AddActor(bullet);
-                bullet.CollisionRadius = 5;
+                bullet.CollisionRadius = 10;
             }
 
             if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_RIGHT)))
             {
                 Bullet bullet = new Bullet('.', Position.X, Position.Y, 1, 0, 100, Color.RED, "Bullet");
                 currentScene.AddActor(bullet);
-                bullet.CollisionRadius = 5;
+                bullet.CollisionRadius = 10;
             }
 
             //PLayer movement
@@ -82,8 +82,8 @@ namespace MathForGames
 
         public override void Draw()
         {
-            base.Draw();
-
+            Raylib.DrawText(Icon.Symbol.ToString(), (int)Position.X - 17, (int)Position.Y - 28, 50, Icon.Color);
+            Raylib.DrawCircleLines((int)Position.X, (int)Position.Y, 25, Color.BLACK);
         }
 
         public override void OnCollision(Actor actor, Scene currentScene)

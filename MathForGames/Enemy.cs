@@ -50,13 +50,19 @@ namespace MathForGames
             base.Update(deltaTime, currentScene);
         }
 
+        public override void Draw()
+        {
+            Raylib.DrawText(Icon.Symbol.ToString(), (int)Position.X - 15, (int)Position.Y - 25, 50, Icon.Color);
+            Raylib.DrawCircleLines((int)Position.X, (int)Position.Y, 25, Color.BLACK);
+        }
+
         /// <summary>
         /// Lets the enemy see their target
         /// </summary>
         /// <returns>True if there is a target in sight</returns>
         public bool GetTargetInSight()
         {
-            Vector2 directionOfTarget = (_target.Position - Position).Normalized;
+            Vector2 directionOfTarget = (_target.Position + Position).Normalized;
 
             //Created a range for their sight
             float distanceOfTarget = Vector2.Distance(_target.Position, Position);
