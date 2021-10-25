@@ -62,19 +62,24 @@ namespace MathForGames
 
             Scene scene = new Scene();                      
             Player player = new Player('@', 350, 400, 200, Color.VIOLET, "Player");
-            player.CollisionRadius = 20;
-            Enemy actor = new Enemy('E', 300, 30, 200, 150, 1, player, Color.YELLOW, "Enemy");
-            actor.CollisionRadius = 10;
-            Enemy actor1 = new Enemy('E', 350, 30, 100, 200, 1, player, Color.YELLOW, "Enemy");
-            actor.CollisionRadius = 10;
+            CircleCollider playerCollider = new CircleCollider(50, player);
+            player.Collider = playerCollider;
+
+            Enemy enemy = new Enemy('E', 300, 30, 200, 150, 1, player, Color.YELLOW, "Enemy");
+            CircleCollider enemyCollider = new CircleCollider(10, enemy);
+            enemy.Collider = enemyCollider;
+
+            Enemy enemy1 = new Enemy('E', 350, 30, 100, 200, 1, player, Color.YELLOW, "Enemy");
+            CircleCollider enemy1Collider = new CircleCollider(10, enemy1);
+            enemy1.Collider = enemy1Collider;
             //Ui section
             UIText text = new UIText(200, 200, "TestTextBox", Color.BLACK, 70, 70, 15, "Sup my guy!");
 
             scene.AddUIElement(text);
 
             scene.AddActor(player);
-            scene.AddActor(actor);
-            scene.AddActor(actor1);
+            scene.AddActor(enemy);
+            scene.AddActor(enemy1);
             _currentSceneIndex = AddScene(scene);
             _scenes[_currentSceneIndex].Start();
             Console.CursorVisible = false;

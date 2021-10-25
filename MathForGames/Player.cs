@@ -36,50 +36,54 @@ namespace MathForGames
             int yDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
 
-            int bulletDirectionX = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_A))
-                + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_D));
-            int bulletDirectionY = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
-                + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
+            //int bulletDirectionX = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_A))
+            //    + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_D));
+            //int bulletDirectionY = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
+            //    + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
 
 
             if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_UP)))
             {
                 Bullet bullet = new Bullet('.', Position.X, Position.Y, 0, -1, 100, Color.RED, "Bullet");
                 currentScene.AddActor(bullet);
-                bullet.CollisionRadius = 10;
+                CircleCollider bulletCollider = new CircleCollider(10, bullet);
+                bullet.Collider = bulletCollider;
             }
 
             if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_DOWN)))
             {
                 Bullet bullet = new Bullet('.', Position.X, Position.Y, 0, 1, 100, Color.RED, "Bullet");
                 currentScene.AddActor(bullet);
-                bullet.CollisionRadius = 10;
+                CircleCollider bulletCollider = new CircleCollider(10, bullet);
+                bullet.Collider = bulletCollider;
             }
 
             if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_LEFT)))
             {
                 Bullet bullet = new Bullet('.', Position.X, Position.Y, -1, 0, 100, Color.RED, "Bullet");
                 currentScene.AddActor(bullet);
-                bullet.CollisionRadius = 10;
+                CircleCollider bulletCollider = new CircleCollider(10, bullet);
+                bullet.Collider = bulletCollider;
             }
 
             if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_RIGHT)))
             {
                 Bullet bullet = new Bullet('.', Position.X, Position.Y, 1, 0, 100, Color.RED, "Bullet");
                 currentScene.AddActor(bullet);
-                bullet.CollisionRadius = 10;
+                CircleCollider bulletCollider = new CircleCollider(10, bullet);
+                bullet.Collider = bulletCollider;
             }
 
-            //PLayer movement
-            Vector2 moveDirection = new Vector2(xDirection, yDirection);
+                //PLayer movement
+                Vector2 moveDirection = new Vector2(xDirection, yDirection);
 
-            Velocity = moveDirection.Normalized * Speed * deltaTime;
+                Velocity = moveDirection.Normalized * Speed * deltaTime;
 
-            Position += Velocity;
+                Position += Velocity;
 
-            base.Update(deltaTime, currentScene);
+                base.Update(deltaTime, currentScene);
+           
         }
-
         public override void Draw()
         {
             Raylib.DrawText(Icon.Symbol.ToString(), (int)Position.X - 17, (int)Position.Y - 28, 50, Icon.Color);

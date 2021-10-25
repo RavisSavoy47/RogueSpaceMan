@@ -54,7 +54,7 @@ namespace MathForGames
                 }
             }
 
-            if (_areAllEnemiesDead && _victoryMessage)
+            if (_areAllEnemiesDead && !_victoryMessage)
             {
                 UIText win = new UIText(200, 100, "WinBox", Color.BLACK, 70, 70, 15, "You Have Won!!!");
                 currentScene.AddUIElement(win);
