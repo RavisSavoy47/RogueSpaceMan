@@ -52,8 +52,8 @@ namespace MathForGames
 
         public override void Draw()
         {
-            Raylib.DrawText(Icon.Symbol.ToString(), (int)Position.X - 15, (int)Position.Y - 25, 50, Icon.Color);
-            Raylib.DrawCircleLines((int)Position.X, (int)Position.Y, 25, Color.BLACK);
+            base.Draw();
+            Collider.Draw();
         }
 
         /// <summary>

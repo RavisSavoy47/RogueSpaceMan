@@ -10,6 +10,8 @@ namespace MathForGames
     {
         private float _speed;
         private Vector2 _velocity;
+        private float _timer = 0;
+        private float _bulletDistance;
 
         public float Speed
         {
@@ -41,18 +43,19 @@ namespace MathForGames
             int bulletDirectionY = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_UP))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_DOWN));
 
+            _timer += deltaTime;
 
-            if (bulletDirectionX != 0 || bulletDirectionY != 0)
+            if (bulletDirectionX != 0 && _timer >= .5 || bulletDirectionY != 0 && _timer >= .5)
             {
-                Bullet bullet = new Bullet('.', Position.X, Position.Y, bulletDirectionX, bulletDirectionY, 100, this, Color.RED, "Bullet");
+                Bullet bullet = new Bullet('.', Position.X, Position.Y, bulletDirectionX, bulletDirectionY, 100, Color.RED, "Bullet");
                 currentScene.AddActor(bullet);
                 CircleCollider bulletCollider = new CircleCollider(10, bullet);
                 bullet.Collider = bulletCollider;
+                _timer = 0;
             }
 
-
-                //PLayer movement
-                Vector2 moveDirection = new Vector2(xDirection, yDirection);
+            //PLayer movement
+            Vector2 moveDirection = new Vector2(xDirection, yDirection);
 
                 Velocity = moveDirection.Normalized * Speed * deltaTime;
 
@@ -61,10 +64,11 @@ namespace MathForGames
                 base.Update(deltaTime, currentScene);
            
         }
+
         public override void Draw()
         {
-            Raylib.DrawText(Icon.Symbol.ToString(), (int)Position.X - 17, (int)Position.Y - 28, 50, Icon.Color);
-            Raylib.DrawCircleLines((int)Position.X, (int)Position.Y, 25, Color.BLACK);
+            base.Draw();
+            Collider.Draw();
         }
 
         public override void OnCollision(Actor actor, Scene currentScene)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using MathLibrary1;
+using Raylib_cs;
 
 namespace MathForGames
 {
@@ -51,7 +52,7 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// The farthest top y position of this collider
+        /// The farthest position upwards
         /// </summary>
         public float Top
         {
@@ -62,7 +63,7 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// The farthest bottom y position of this collider
+        /// The farthest posituion downwards
         /// </summary>
         public float Bottom
         {
@@ -70,6 +71,41 @@ namespace MathForGames
             {
                 return Owner.Position.Y + Height / 2;
             }
+        }
+
+        public AABBCollider(float width, float height, Actor owner) : base(owner, ColliderType.AABB)
+        {
+            _width = width;
+            _height = height;
+        }
+
+        public override bool CheckCollisionAABB(AABBCollider other)
+        {
+            //Return false if this owner is checking for a collision against itself
+            if (other.Owner == Owner)
+                return false;
+
+            //Return true if there is an overlap between boxes
+            if(other.Left <= Right &&
+               other.Top <= Bottom &&
+               Left <= other.Right &&
+               Top <= other.Bottom)
+            {
+                return true;
+            }
+
+            //Return false if there is no overlap
+            return false;
+        }
+
+        public override bool CheckCollisionCircle(CircleCollider other)
+        {
+            return other.CheckCollisionAABB(this);
+        }
+
+        public override void Draw()
+        {
+            Raylib.DrawRectangleLines((int)Left, (int)Top, (int)Width, (int)Height, Color.BLACK);
         }
     }
 }

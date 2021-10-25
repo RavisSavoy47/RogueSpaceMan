@@ -10,8 +10,7 @@ namespace MathForGames
     {
         private float _speed;
         private Vector2 _velocity;
-        private Vector2 _startPosition;
-        private Actor _owner;
+        private Vector2 _bulletPosition;
 
         public float Speed
         {
@@ -25,25 +24,17 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Bullet(char icon, float x, float y, float velocityX, float velocityY, float speed, Actor owner, Color color, string name = "Bullet")
+        public Bullet(char icon, float x, float y, float velocityX, float velocityY, float speed, Color color, string name = "Bullet")
             : base(icon, x, y, color, name)
         {
             _velocity.X = velocityX;
             _velocity.Y = velocityY;
             _speed = speed;
-            _owner = owner;
-        }
-
-        public override void Start()
-        {
-            base.Start();
-            _startPosition = _owner.Position;
+            _bulletPosition = Position;
         }
 
         public override void Update(float deltaTime, Scene currentScene)
         {
-            if (Vector2.Distance(Position, _startPosition) >= 200)
-                currentScene.RemoveActor(this);
 
             Vector2 moveDirection = new Vector2 (_velocity.X, _velocity.Y);
 
@@ -52,6 +43,10 @@ namespace MathForGames
             Position += Velocity;
 
             base.Update(deltaTime, currentScene);
+
+            if (Position.X - _bulletPosition.X > 100 || Position.Y - _bulletPosition.Y > 100 ||
+                Position.X - _bulletPosition.X < -100 || Position.Y - _bulletPosition.Y < -100)
+                currentScene.RemoveActor(this);
         }
 
         public override void Draw()
