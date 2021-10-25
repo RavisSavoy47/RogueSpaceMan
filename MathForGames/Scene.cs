@@ -13,6 +13,7 @@ namespace MathForGames
         private Actor[] _actors;
         private Actor[] _UIElements;
         private int _enemyCount = 2;
+        private bool checkswin;
 
         public int EnemyCount
         {
@@ -42,6 +43,7 @@ namespace MathForGames
         /// </summary>
         public virtual void Update(float deltaTime, Scene currentScene)
         {
+            checkswin = false;
 
             for (int i = 0; i < _actors.Length; i++)
             {
@@ -62,10 +64,11 @@ namespace MathForGames
                 }
             }
 
-            if (EnemyCount == 0)
+            if (EnemyCount == 0 && !checkswin)
             {
                 UIText win = new UIText(200, 100, "WinBox", Color.BLACK, 70, 70, 15, "You Have Won!!!");
                 currentScene.AddUIElement(win);
+                checkswin = true;
             }
         }
 

@@ -44,8 +44,8 @@ namespace MathForGames
 
             base.Update(deltaTime, currentScene);
 
-            if (Position.X - _bulletPosition.X > 100 || Position.Y - _bulletPosition.Y > 100 ||
-                Position.X - _bulletPosition.X < -100 || Position.Y - _bulletPosition.Y < -100)
+            if (Position.X - _bulletPosition.X > 200 || Position.Y - _bulletPosition.Y > 200 ||
+                Position.X - _bulletPosition.X < -200 || Position.Y - _bulletPosition.Y < -200)
                 currentScene.RemoveActor(this);
         }
 
