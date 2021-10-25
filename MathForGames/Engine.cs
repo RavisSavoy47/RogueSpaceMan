@@ -72,10 +72,7 @@ namespace MathForGames
             Enemy enemy1 = new Enemy('E', 350, 30, 100, 200, 1, player, Color.YELLOW, "Enemy");
             CircleCollider enemy1Collider = new CircleCollider(10, enemy1);
             enemy1.Collider = enemy1Collider;
-            //Ui section
-            UIText text = new UIText(200, 200, "TestTextBox", Color.BLACK, 70, 70, 15, "Sup my guy!");
 
-            scene.AddUIElement(text);
 
             scene.AddActor(player);
             scene.AddActor(enemy);

@@ -10,47 +10,65 @@ namespace MathForGames
         private float _width;
         private float _height;
 
+        /// <summary>
+        /// The size of thsi collider on the x axis
+        /// </summary>
         public float Width
         {
             get { return _width; }
             set { _width = value; }
         }
 
+        /// <summary>
+        /// Teh size of this collider pn the y axis
+        /// </summary>
         public float Height
         {
             get { return _height; }
             set { _height = value; }
         }
 
+        /// <summary>
+        /// The farthest left x position of this collider
+        /// </summary>
         public float Left
         {
             get
             {
-                return Owner.Position - Height / 2;
+                return Owner.Position.X - Width / 2;
             }
         }
 
+        /// <summary>
+        /// The farthest right x position of this collider
+        /// </summary>
         public float Right
         {
             get
             {
-                return _height;
+                return Owner.Position.X + Width / 2;
             }
         }
 
+        /// <summary>
+        /// The farthest top y position of this collider
+        /// </summary>
         public float Top
         {
             get
             {
-                return _width;
+                return Owner.Position.Y - Height / 2;
             }
         }
 
+        /// <summary>
+        /// The farthest bottom y position of this collider
+        /// </summary>
         public float Bottom
         {
             get
             {
-                _width;
+                return Owner.Position.Y + Height / 2;
             }
         }
     }

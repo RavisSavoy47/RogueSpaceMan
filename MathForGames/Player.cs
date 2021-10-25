@@ -36,43 +36,20 @@ namespace MathForGames
             int yDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
 
-            //int bulletDirectionX = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_A))
-            //    + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_D));
-            //int bulletDirectionY = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
-            //    + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
+            int bulletDirectionX = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
+                + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT));
+            int bulletDirectionY = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_UP))
+                + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_DOWN));
 
 
-            if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_UP)))
+            if (bulletDirectionX != 0 || bulletDirectionY != 0)
             {
-                Bullet bullet = new Bullet('.', Position.X, Position.Y, 0, -1, 100, Color.RED, "Bullet");
+                Bullet bullet = new Bullet('.', Position.X, Position.Y, bulletDirectionX, bulletDirectionY, 100, this, Color.RED, "Bullet");
                 currentScene.AddActor(bullet);
                 CircleCollider bulletCollider = new CircleCollider(10, bullet);
                 bullet.Collider = bulletCollider;
             }
 
-            if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_DOWN)))
-            {
-                Bullet bullet = new Bullet('.', Position.X, Position.Y, 0, 1, 100, Color.RED, "Bullet");
-                currentScene.AddActor(bullet);
-                CircleCollider bulletCollider = new CircleCollider(10, bullet);
-                bullet.Collider = bulletCollider;
-            }
-
-            if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_LEFT)))
-            {
-                Bullet bullet = new Bullet('.', Position.X, Position.Y, -1, 0, 100, Color.RED, "Bullet");
-                currentScene.AddActor(bullet);
-                CircleCollider bulletCollider = new CircleCollider(10, bullet);
-                bullet.Collider = bulletCollider;
-            }
-
-            if (Convert.ToBoolean(Raylib.IsKeyPressed(KeyboardKey.KEY_RIGHT)))
-            {
-                Bullet bullet = new Bullet('.', Position.X, Position.Y, 1, 0, 100, Color.RED, "Bullet");
-                currentScene.AddActor(bullet);
-                CircleCollider bulletCollider = new CircleCollider(10, bullet);
-                bullet.Collider = bulletCollider;
-            }
 
                 //PLayer movement
                 Vector2 moveDirection = new Vector2(xDirection, yDirection);
