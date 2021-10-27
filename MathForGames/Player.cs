@@ -55,8 +55,9 @@ namespace MathForGames
 
             if (bulletDirectionX != 0 && _timer >= .5 || bulletDirectionY != 0 && _timer >= .5)
             {
-                Bullet bullet = new Bullet('.', Position.X, Position.Y, bulletDirectionX, bulletDirectionY, 100, Color.RED, "Bullet");
-                currentScene.AddActor(bullet);
+                Bullet bullet = new Bullet(Position.X, Position.Y, bulletDirectionX, bulletDirectionY, 100, "Bullet", "bullet.png");
+                bullet.SetScale(50, 50);
+                currentScene.AddActor(bullet);                
                 CircleCollider bulletCollider = new CircleCollider(10, bullet);
                 bullet.Collider = bulletCollider;
                 _timer = 0;

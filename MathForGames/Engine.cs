@@ -61,15 +61,18 @@ namespace MathForGames
             Raylib.SetTargetFPS(60);
 
             Scene scene = new Scene();                      
-            Player player = new Player('@', 350, 400, 200, Color.VIOLET, "Player");
+            Player player = new Player(350, 400, 200, "Player", "player.png");
+            player.SetScale(50, 50);
             AABBCollider playerCollider = new AABBCollider(50, 50, player);
             player.Collider = playerCollider;
 
-            Enemy enemy = new Enemy('E', 300, 30, 200, 150, 1, player, Color.YELLOW, "Enemy");
+            Enemy enemy = new Enemy(300, 30, 200, 150, 1, player, "Enemy", "enemy.png");
+            enemy.SetScale(50, 50);
             AABBCollider enemyCollider = new AABBCollider(50, 50, enemy);
             enemy.Collider = enemyCollider;
 
-            Enemy enemy1 = new Enemy('E', 350, 30, 100, 200, 1, player, Color.YELLOW, "Enemy");
+            Enemy enemy1 = new Enemy(350, 30, 100, 200, 1, player, "Enemy", "enemy.png");
+            enemy1.SetScale(50, 50);
             AABBCollider enemy1Collider = new AABBCollider(50, 50, enemy1);
             enemy1.Collider = enemy1Collider;
 

@@ -46,9 +46,6 @@ namespace MathForGames
             set { _sprite = value; }
         }
         
-        /// <summary>
-        /// 
-        /// </summary>
         public Collider Collider
         {
             get { return _collider; }

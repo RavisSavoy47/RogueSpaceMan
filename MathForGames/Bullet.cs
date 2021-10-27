@@ -24,8 +24,8 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Bullet(char icon, float x, float y, float velocityX, float velocityY, float speed, Color color, string name = "Bullet")
-            : base(icon, x, y, color, name)
+        public Bullet(float x, float y, float velocityX, float velocityY, float speed, string name = "Bullet", string path = "")
+            : base(x, y, name, path)
         {
             _velocity.X = velocityX;
             _velocity.Y = velocityY;
@@ -57,7 +57,8 @@ namespace MathForGames
 
         public override void Draw()
         {
-            Raylib.DrawText(Icon.Symbol.ToString(), (int)Position.X - 3, (int)Position.Y - 38, 50, Icon.Color);
+            base.Draw();
+            Collider.Draw();
             Raylib.DrawCircleLines((int)Position.X, (int)Position.Y, 15, Color.BLACK);
         }
 
