@@ -33,6 +33,11 @@ namespace MathForGames
             _bulletPosition = Position;
         }
 
+        /// <summary>
+        /// The movement for each bullet and their range
+        /// </summary>
+        /// <param name="deltaTime"></param>
+        /// <param name="currentScene"></param>
         public override void Update(float deltaTime, Scene currentScene)
         {
 
@@ -44,6 +49,7 @@ namespace MathForGames
 
             base.Update(deltaTime, currentScene);
 
+            //The range of bullets 
             if (Position.X - _bulletPosition.X > 200 || Position.Y - _bulletPosition.Y > 200 ||
                 Position.X - _bulletPosition.X < -200 || Position.Y - _bulletPosition.Y < -200)
                 currentScene.RemoveActor(this);
