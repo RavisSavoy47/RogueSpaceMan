@@ -13,6 +13,9 @@ namespace MathForGames
         private Vector2 _forward = new Vector2(1,0);
         private Collider _collider;
         private Matrix3 _transform = Matrix3.Identity;
+        private Matrix3 _translation = Matrix3.Identity;
+        private Matrix3 _rotation = Matrix3.Identity;
+        private Matrix3 _scale = Matrix3.Identity;
         private Sprite _sprite;
 
         /// <summary>
@@ -72,8 +75,8 @@ namespace MathForGames
 
         public virtual void Update(float deltaTime, Scene currentScene)
         {
+            _transform = _translation * _rotation * _scale;
             Console.WriteLine(_name + ": " + Position.X + ", " + Position.Y);
-            
         }
 
         public virtual void Draw()
@@ -106,10 +109,35 @@ namespace MathForGames
             return Collider.CheckCollision(other);
         }
 
+        public void SetTranslation(float translationX, float translationY)
+        {
+
+        }
+
+        public void Translate(float translationX, float translationY)
+        {
+
+        }
+
+        public void SetRotation(float radians)
+        {
+
+        }
+
+        public void Rotate(float radians)
+        {
+
+        }
+
         public void SetScale(float x, float y)
         {
-            _transform.M00 = x;
-            _transform.M11 = y;
+            _scale.M00 = x;
+            _scale.M11 = y;
+        }
+
+        public void Scale(float x, float y)
+        {
+
         }
     }
 }
