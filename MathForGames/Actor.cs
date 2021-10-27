@@ -16,10 +16,10 @@ namespace MathForGames
     {
         private Icon _icon;
         private string _name;
-        private Vector2 _position;
         private bool _started;
         private Vector2 _forward = new Vector2(1,0);
         private Collider _collider;
+        private Matrix3 _transform = Matrix3.Identity;
 
         /// <summary>
         /// True if the start fuction has been called for this actor
