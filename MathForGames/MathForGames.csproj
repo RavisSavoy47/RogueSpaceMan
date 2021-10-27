@@ -12,13 +12,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="bullet.png">
+    <Content Include="Images\bullet.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="enemy.png">
+    <Content Include="Images\enemy.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="player.png">
+    <Content Include="Images\player.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

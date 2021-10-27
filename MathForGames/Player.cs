@@ -55,7 +55,7 @@ namespace MathForGames
 
             if (bulletDirectionX != 0 && _timer >= .5 || bulletDirectionY != 0 && _timer >= .5)
             {
-                Bullet bullet = new Bullet(Position.X, Position.Y, bulletDirectionX, bulletDirectionY, 100, "Bullet", "bullet.png");
+                Bullet bullet = new Bullet(Position.X, Position.Y, bulletDirectionX, bulletDirectionY, 100, "Bullet", "Images/bullet.png");
                 bullet.SetScale(50, 50);
                 currentScene.AddActor(bullet);                
                 CircleCollider bulletCollider = new CircleCollider(10, bullet);
@@ -91,7 +91,11 @@ namespace MathForGames
         public override void OnCollision(Actor actor, Scene currentScene)
         {
             if (actor is Enemy)
-                Engine.CloseApplication();
+            {
+                UIText DeathMessage = new UIText(500, 100, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
+                currentScene.AddUIElement(DeathMessage);
+                currentScene.RemoveActor(this);
+            }
         }
     }
 }

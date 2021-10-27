@@ -12,7 +12,7 @@ namespace MathForGames
         /// </summary>
         private Actor[] _actors;
         private Actor[] _UIElements;
-        private int _enemyCount = 2;
+        private int _enemyCount = 4;
         private bool checkswin;
 
         public int EnemyCount

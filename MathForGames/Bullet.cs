@@ -50,8 +50,8 @@ namespace MathForGames
             base.Update(deltaTime, currentScene);
 
             //The range of bullets 
-            if (Position.X - _bulletPosition.X > 200 || Position.Y - _bulletPosition.Y > 200 ||
-                Position.X - _bulletPosition.X < -200 || Position.Y - _bulletPosition.Y < -200)
+            if (Position.X - _bulletPosition.X > 150 || Position.Y - _bulletPosition.Y > 150 ||
+                Position.X - _bulletPosition.X < -150 || Position.Y - _bulletPosition.Y < -150)
                 currentScene.RemoveActor(this);
         }
 
