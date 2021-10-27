@@ -35,6 +35,11 @@ namespace MathForGames
             _maxViewAngle = maxViewAngle;
         }
 
+        /// <summary>
+        /// Lets the enemy move 
+        /// </summary>
+        /// <param name="deltaTime"></param>
+        /// <param name="currentScene"></param>
         public override void Update(float deltaTime, Scene currentScene)
         {
             //Create a vector that stores the move input
@@ -42,6 +47,7 @@ namespace MathForGames
 
             Velocity = moveDirection * Speed * deltaTime;
 
+            //Once target it in sight enemy moves
             if(GetTargetInSight())
                 Position += Velocity;
 
@@ -50,6 +56,9 @@ namespace MathForGames
             base.Update(deltaTime, currentScene);
         }
 
+        /// <summary>
+        /// Calls the collider draw
+        /// </summary>
         public override void Draw()
         {
             base.Draw();

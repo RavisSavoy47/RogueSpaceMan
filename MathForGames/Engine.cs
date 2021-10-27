@@ -50,7 +50,7 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// Called when th eapplication starts 
+        /// Called when the application starts 
         /// </summary>
         private void Start()
         {
