@@ -27,10 +27,11 @@ namespace MathLibrary1
             }
         }
 
+
         /// <summary>
         /// Creates a new matrix that has been rotated by the given value in radians
         /// </summary>
-        /// <param name="radians"> The result of the rotation</param>
+        /// <param name="radians">The result of the rotation</param>
         public static Matrix3 CreateRotation(float radians)
         {
 
@@ -39,19 +40,19 @@ namespace MathLibrary1
         /// <summary>
         /// Creates a new matrix that has been translated by the given value
         /// </summary>
-        /// <param name="x">The position of the new martix</param>
-        /// <param name="y">The position of the new martix</param>
+        /// <param name="x">The x position of the new matrix</param>
+        /// <param name="y">The y position of the new matrix</param>
         public static Matrix3 CreateTranslation(float x, float y)
         {
 
         }
 
         /// <summary>
-        /// Create a new matrix that has been scaled by th egiven value
+        /// Creates a new matrix that has been scaled by teh given value
         /// </summary>
-        /// <param name="x">The vector that is increasing</param>
-        /// <param name="y">The vector used to increadr the 1st vector</param>
-        /// <returns>The result of the matrix</returns>
+        /// <param name="x">The value to use to scale the matrix in the x axis</param>
+        /// <param name="y">The value to use to scale the matrix in the y axis</param>
+        /// <returns>The result of the scale</returns>
         public static Matrix3 CreateScale(float x, float y)
         {
 
@@ -59,12 +60,16 @@ namespace MathLibrary1
 
         public static Matrix3 operator +(Matrix3 lhs, Matrix3 rhs)
         {
-
+            return new Matrix3 (lhs.M00 + rhs.M00, lhs.M01 + rhs.M01, lhs.M02 + rhs.M02,
+                                lhs.M10 + rhs.M10, lhs.M11 + rhs.M11, lhs.M12 + rhs.M12,
+                                lhs.M20 + rhs.M20, lhs.M21 + rhs.M21, lhs.M22 + rhs.M22);
         }
 
         public static Matrix3 operator -(Matrix3 lhs, Matrix3 rhs)
         {
-
+            return new Matrix3(lhs.M00 - rhs.M00, lhs.M01 - rhs.M01, lhs.M02 - rhs.M02,
+                               lhs.M10 - rhs.M10, lhs.M11 - rhs.M11, lhs.M12 - rhs.M12,
+                               lhs.M20 - rhs.M20, lhs.M21 - rhs.M21, lhs.M22 - rhs.M22);
         }
 
         public static Matrix3 operator *(Matrix3 lhs, Matrix3 rhs)
@@ -72,9 +77,5 @@ namespace MathLibrary1
 
         }
 
-        public static Matrix3 operator /(Matrix3 lhs, Matrix3 rhs)
-        {
-
-        }
     }
 }
