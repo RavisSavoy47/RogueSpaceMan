@@ -116,7 +116,7 @@ namespace MathForGames
         /// <param name="translationY">The new y position</param>
         public void SetTranslation(float translationX, float translationY)
         {
-
+            _translation = Matrix3.CreateTranslation(translationX, translationY);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace MathForGames
         /// <param name="translationY">The amount to move on the yparam>
         public void Translate(float translationX, float translationY)
         {
-
+            _translation *= Matrix3.CreateTranslation(translationX, translationY);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace MathForGames
         /// <param name="radians">The angle of the new rotation in radians.</param>
         public void SetRotation(float radians)
         {
-
+            _rotation = Matrix3.CreateRotation(radians);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace MathForGames
         /// <param name="radians">The angle in radians to turn.</param>
         public void Rotate(float radians)
         {
-
+            _rotation *= Matrix3.CreateRotation(radians);
         }
 
         /// <summary>
@@ -165,7 +165,7 @@ namespace MathForGames
         /// <param name="y">The value to scale on the y axis</param>
         public void Scale(float x, float y)
         {
-
+            _scale *= Matrix3.CreateScale(x, y);
         }
     }
 }
