@@ -53,13 +53,15 @@ namespace MathForGames
             //Gives the bullets a cooldown timer
             _timer += deltaTime;
 
-            if (bulletDirectionX != 0 && _timer >= .5 || bulletDirectionY != 0 && _timer >= .5)
+            if (bulletDirectionX != 0 && _timer >= .5 || bulletDirectionY != 0 && _timer >= .5 )
             {
                 Bullet bullet = new Bullet(Position.X, Position.Y, bulletDirectionX, bulletDirectionY, 100, "Bullet", "Images/bullet.png");
                 bullet.SetScale(50, 50);
-                currentScene.AddActor(bullet);                
+ 
                 CircleCollider bulletCollider = new CircleCollider(10, bullet);
                 bullet.Collider = bulletCollider;
+                currentScene.AddActor(bullet);                
+                
                 _timer = 0;
             }
 
@@ -68,7 +70,7 @@ namespace MathForGames
 
                 Velocity = moveDirection.Normalized * Speed * deltaTime;
 
-                Position += Velocity;
+                base.Translate(Velocity.X, Velocity.Y);
 
                 base.Update(deltaTime, currentScene);
            
@@ -90,12 +92,12 @@ namespace MathForGames
         /// <param name="currentScene"></param>
         public override void OnCollision(Actor actor, Scene currentScene)
         {
-            if (actor is Enemy)
-            {
-                UIText DeathMessage = new UIText(500, 100, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
-                currentScene.AddUIElement(DeathMessage);
-                currentScene.RemoveActor(this);
-            }
+            //if (actor is Enemy)
+            //{
+            //    UIText DeathMessage = new UIText(500, 100, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
+            //    currentScene.AddUIElement(DeathMessage);
+            //    currentScene.RemoveActor(this);
+            //}
         }
     }
 }

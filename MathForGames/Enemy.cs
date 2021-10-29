@@ -49,8 +49,8 @@ namespace MathForGames
             Velocity = moveDirection * Speed * deltaTime;
 
             //Once target it in sight enemy moves
-            if(GetTargetInSight())
-                Position += Velocity;
+            if (GetTargetInSight())
+                base.Translate(Velocity.X, Velocity.Y);
 
             
 

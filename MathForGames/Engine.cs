@@ -63,13 +63,16 @@ namespace MathForGames
             Scene scene = new Scene();                      
             Player player = new Player(380, 400, 200, "Player", "Images/player.png");
             player.SetScale(50, 50);
+
             AABBCollider playerCollider = new AABBCollider(50, 50, player);
             player.Collider = playerCollider;
 
             Enemy enemy1 = new Enemy(300, 30, 200, 350, 1, player, "Enemy", "Images/enemy.png");
             enemy1.SetScale(50, 50);
+
             AABBCollider enemy1Collider = new AABBCollider(50, 50, enemy1);
             enemy1.Collider = enemy1Collider;
+
 
             Enemy enemy2 = new Enemy(350, 30, 100, 500, 1, player, "Enemy", "Images/enemy.png");
             enemy2.SetScale(50, 50);
@@ -78,11 +81,13 @@ namespace MathForGames
 
             Enemy enemy3 = new Enemy(400, 30, 100, 500, 1, player, "Enemy", "Images/enemy.png");
             enemy3.SetScale(50, 50);
+
             AABBCollider enemy3Collider = new AABBCollider(50, 50, enemy3);
             enemy3.Collider = enemy3Collider;
 
             Enemy enemy4 = new Enemy(450, 30, 200, 350, 1, player, "Enemy", "Images/enemy.png");
             enemy4.SetScale(50, 50);
+
             AABBCollider enemy4Collider = new AABBCollider(50, 50, enemy4);
             enemy4.Collider = enemy4Collider;
 

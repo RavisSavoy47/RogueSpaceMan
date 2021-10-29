@@ -35,8 +35,8 @@ namespace MathLibrary1
         public static Matrix3 CreateRotation(float radians)
         {
             return new Matrix3((float)Math.Cos(radians), (float)-Math.Sin(radians), 0,
-                               (float)Math.Sin(radians), (float)Math.Sin(radians), 0,
-                                0, 0, 1);
+                               (float)Math.Sin(radians), (float) Math.Cos(radians), 0,
+                                                      0,                         0, 1);
         }
 
         /// <summary>

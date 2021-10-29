@@ -30,7 +30,6 @@ namespace MathForGames
             _velocity.X = velocityX;
             _velocity.Y = velocityY;
             _speed = speed;
-            _bulletPosition = Position;
         }
 
         /// <summary>
@@ -40,19 +39,19 @@ namespace MathForGames
         /// <param name="currentScene"></param>
         public override void Update(float deltaTime, Scene currentScene)
         {
-
+            
             Vector2 moveDirection = new Vector2 (_velocity.X, _velocity.Y);
 
             Velocity = moveDirection.Normalized * Speed * deltaTime;
 
-            Position += Velocity;
+            base.Translate(Velocity.X, Velocity.Y);
 
             base.Update(deltaTime, currentScene);
 
-            //The range of bullets 
-            if (Position.X - _bulletPosition.X > 150 || Position.Y - _bulletPosition.Y > 150 ||
-                Position.X - _bulletPosition.X < -150 || Position.Y - _bulletPosition.Y < -150)
-                currentScene.RemoveActor(this);
+            //The range of bullets
+            //if (Position.X - _bulletPosition.X > 150 || Position.Y - _bulletPosition.Y > 150 ||
+            //    Position.X - _bulletPosition.X < -150 || Position.Y - _bulletPosition.Y < -150)
+            //    currentScene.RemoveActor(this);
         }
 
         public override void Draw()

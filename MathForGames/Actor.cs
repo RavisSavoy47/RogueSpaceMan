@@ -60,8 +60,8 @@ namespace MathForGames
 
         public Actor(Vector2 position, string name = "Actor", string path = "")
         {
-            
-            Position = position;
+
+            SetTranslation(position.X, position.Y);
             _name = name;
 
             if (path != "")
@@ -154,8 +154,7 @@ namespace MathForGames
         /// <param name="y">The value to scale on the y axis</param>
         public void SetScale(float x, float y)
         {
-            _scale.M00 = x;
-            _scale.M11 = y;
+            _scale = Matrix3.CreateScale(x, y);
         }
 
         /// <summary>
