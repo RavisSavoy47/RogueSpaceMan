@@ -8,7 +8,9 @@
   <ItemGroup>
     <None Remove="bullet.png" />
     <None Remove="enemy.png" />
+    <None Remove="Images\sun.png" />
     <None Remove="player.png" />
+    <None Remove="Solar System\mercury.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +21,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\player.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Solar System\mercury.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Solar System\sun.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

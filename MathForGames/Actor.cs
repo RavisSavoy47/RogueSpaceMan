@@ -41,20 +41,24 @@ namespace MathForGames
 
         public Vector2 WorldPosition
         {
-            get;
-            set;
+            get { return new Vector2(GlobalTransform.M02, GlobalTransform.M12); }
+
+            set
+            {
+                SetTranslation(value.X, value.Y);
+            }
         }
 
         public Matrix3 GlobalTransform
         {
-            get;
-            set;
+            get { return _localTransform; }
+            private set { _localTransform = value; }
         }
 
         public Matrix3 LocalTransform
         {
-            get;
-            set;
+            get { return _localTransform; }
+            private set { _localTransform = value; }
         }
 
         public Actor Parent
@@ -111,7 +115,10 @@ namespace MathForGames
 
         public void UpdateTransforms()
         {
-
+            if (Parent != null)
+                _globalTransform = _parent._globalTransform * _localTransform;
+            else
+                _globalTransform = _localTransform;
         }
 
         public void AddChild(Actor child)
@@ -130,6 +137,8 @@ namespace MathForGames
 
             //Set the old array to be the new array
             _children = tempArray;
+
+            child.Parent = this;
         }
 
         public bool RemoveChild(Actor child)
@@ -164,6 +173,8 @@ namespace MathForGames
                 //Add the new array to the old array
                 _children = tempArray;
 
+            child.Parent = null;
+
             return childRemoved;
         }
 
@@ -174,14 +185,17 @@ namespace MathForGames
 
         public virtual void Update(float deltaTime, Scene currentScene)
         {
+            Rotate(.04f);
+
             _localTransform = _translation * _rotation * _scale;
             Console.WriteLine(_name + ": " + LocalPosition.X + ", " + LocalPosition.Y);
+            UpdateTransforms();
         }
 
         public virtual void Draw()
         {
             if (_sprite != null)
-                _sprite.Draw(_localTransform);
+                _sprite.Draw(_globalTransform);
         }
 
         public virtual void End()
@@ -191,7 +205,7 @@ namespace MathForGames
 
         public virtual void OnCollision(Actor actor, Scene currentScene)
         {
-
+            
         }
 
         /// <summary>

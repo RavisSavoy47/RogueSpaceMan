@@ -60,9 +60,21 @@ namespace MathForGames
             Raylib.InitWindow(800, 450, "Math For Games");
             Raylib.SetTargetFPS(60);
 
-            Scene scene = new Scene();   
-            
+            Scene scene = new Scene();
 
+            Actor sun = new Actor(400, 250,"planet", "Solar System/sun.png");
+            sun.SetScale(80, 80);
+            scene.AddActor(sun);
+
+            Actor mercury = new Actor(.8f, .8f, "planet", "Solar System/mercury.png");
+            mercury.SetScale(.2f, .2f);
+            sun.AddChild(mercury);
+
+           
+
+            scene.AddActor(mercury);
+
+            
 
             //Player player = new Player(380, 400, 200, "Player", "Images/player.png");
             //player.SetScale(50, 50);
