@@ -59,13 +59,13 @@ namespace MathForGames
 
         public Actor Parent
         {
-            get;
-            set;
+            get { return _parent; }
+            set { _parent = value; }
         }
 
         public Actor[] Children
         {
-            get;
+            get { return _children; }
         }
 
         public Vector2 Size
@@ -116,12 +116,55 @@ namespace MathForGames
 
         public void AddChild(Actor child)
         {
+            //Create a new temp arary larger than the current one
+            Actor[] tempArray = new Actor[_children.Length + 1];
 
+            //Copy all values from old array into the temp array
+            for (int i = 0; i < _children.Length; i++)
+            {
+                tempArray[i] = _children[i];
+            }
+
+            //Add the new actor to the end of the new array
+            tempArray[_children.Length] = child;
+
+            //Set the old array to be the new array
+            _children = tempArray;
         }
 
         public bool RemoveChild(Actor child)
         {
-            return true;
+            //Create a variable to store if the removal was successful
+            bool childRemoved = false;
+
+            //Create a new temp arary smaller than the current one
+            Actor[] tempArray = new Actor[_children.Length - 1];
+
+            //Copy all values except the actor we dont want into the new array
+            int j = 0;
+            for (int i = 0; i < tempArray.Length; i++)
+            {
+                //If the actor that the loop is on is not the temp array counter
+                if (_children[i] != child)
+                {
+                    //...adds the actor into the new array and increments the tmep array counter
+                    tempArray[j] = _children[i];
+                    j++;
+                }
+                //Otherwise if the actor is the one to remove...
+                else
+                {
+                    //...set actorRemove to true
+                    childRemoved = true;
+                }
+            }
+
+            //If the actorRemove was successful them
+            if (childRemoved)
+                //Add the new array to the old array
+                _children = tempArray;
+
+            return childRemoved;
         }
 
         public virtual void Start()
