@@ -50,7 +50,12 @@ namespace MathForGames
 
             //Once target it in sight enemy moves
             if (GetTargetInSight())
+            {
                 Position += Velocity;
+
+                if (Velocity.Magnitude > 0)
+                    Forward = Velocity.Normalized;
+            }
 
 
 

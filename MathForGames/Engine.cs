@@ -64,13 +64,11 @@ namespace MathForGames
             
             Player player = new Player(380, 400, 200, "Player", "Images/player.png");
             player.SetScale(50, 50);
-            player.SetRotation(1);
             AABBCollider playerCollider = new AABBCollider(50, 50, player);
             player.Collider = playerCollider;
 
             Enemy enemy1 = new Enemy(300, 30, 200, 350, 2, player, "Enemy", "Images/enemy.png");
             enemy1.SetScale(50, 50);
-            enemy1.LookAt(new Vector2(20000, 9000));
             AABBCollider enemy1Collider = new AABBCollider(50, 50, enemy1);
             enemy1.Collider = enemy1Collider;
 
