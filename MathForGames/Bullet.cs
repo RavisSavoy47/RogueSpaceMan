@@ -44,7 +44,7 @@ namespace MathForGames
 
             Velocity = moveDirection.Normalized * Speed * deltaTime;
 
-            Position += Velocity;
+            LocalPosition += Velocity;
 
             base.Update(deltaTime, currentScene);
 
@@ -58,7 +58,7 @@ namespace MathForGames
         {
             base.Draw();
             Collider.Draw();
-            Raylib.DrawCircleLines((int)Position.X, (int)Position.Y, 15, Color.BLACK);
+            Raylib.DrawCircleLines((int)LocalPosition.X, (int)LocalPosition.Y, 15, Color.BLACK);
         }
 
         public override void OnCollision(Actor actor, Scene currentScene)

@@ -55,7 +55,7 @@ namespace MathForGames
 
             if (bulletDirectionX != 0 && _timer >= .5 || bulletDirectionY != 0 && _timer >= .5 )
             {
-                Bullet bullet = new Bullet(Position.X, Position.Y, bulletDirectionX, bulletDirectionY, 100, "Bullet", "Images/bullet.png");
+                Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, bulletDirectionX, bulletDirectionY, 100, "Bullet", "Images/bullet.png");
                 bullet.SetScale(50, 50);
  
                 CircleCollider bulletCollider = new CircleCollider(10, bullet);
@@ -73,7 +73,7 @@ namespace MathForGames
             if(Velocity.Magnitude > 0)
             Forward = Velocity.Normalized;
 
-            Position += Velocity;
+            LocalPosition += Velocity;
 
             base.Update(deltaTime, currentScene);
            
