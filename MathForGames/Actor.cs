@@ -44,8 +44,12 @@ namespace MathForGames
 
         public Vector2 Forward
         {
-            get { return _forward; }
-            set { _forward = value; }
+            get { return new Vector2 (_rotation.M00, _rotation.M10); }
+            set 
+            {
+                Vector2 point = value.Normalized + Position;
+                LookAt(point);
+            }
         }
 
         public Sprite Sprite
@@ -170,6 +174,38 @@ namespace MathForGames
         public void Scale(float x, float y)
         {
             _scale *= Matrix3.CreateScale(x, y);
+        }
+
+        /// <summary>
+        /// Rotates the actot to face the given position 
+        /// </summary>
+        /// <param name="position">Th eposition the actor should be looking</param>
+        public void LookAt(Vector2 position)
+        {
+            //Find the position the actor should look in
+            Vector2 direction = (position - Position).Normalized;
+
+            
+
+            //Use the dot product to find the angle the actor needs to rotate
+            float dotProd = Vector2.DotProduct(direction, Forward);
+
+            if (dotProd > 1)
+                dotProd = 1;
+
+            float angle = (float)Math.Acos(dotProd);
+
+            //Find a perpindicular vector to the direction
+            Vector2 perpDirection = new Vector2(direction.Y, -direction.X);
+
+            //Find the dot product of the perpindicular vector and the current forward
+            float perpDot = Vector2.DotProduct(perpDirection, Forward);
+
+            //If the result isn't 0, use it to change the sign of the angle to be either position or negative
+            if (perpDot != 0)
+                angle *= -perpDot / MathF.Abs(perpDot);
+
+            Rotate(angle);
         }
     }
 }
