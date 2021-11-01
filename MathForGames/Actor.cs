@@ -28,13 +28,18 @@ namespace MathForGames
 
         public Vector2 Position
         {
-            get { return new Vector2(_transform.M02, _transform.M12); }
+            get { return new Vector2(_translation.M02, _translation.M12); }
 
             set 
             {
-                _transform.M02 = value.X;
-                _transform.M12 = value.Y;
+                SetTranslation(value.X, value.Y);
             }
+        }
+
+        public Vector2 Size
+        {
+            get { return new Vector2(_scale.M00, _scale.M11); }
+            set { SetScale(value.X, value.Y); }
         }
 
         public Vector2 Forward

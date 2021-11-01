@@ -68,11 +68,11 @@ namespace MathForGames
             //PLayer movement
             Vector2 moveDirection = new Vector2(xDirection, yDirection);
 
-                Velocity = moveDirection.Normalized * Speed * deltaTime;
+            Velocity = moveDirection.Normalized * Speed * deltaTime;
 
-                base.Translate(Velocity.X, Velocity.Y);
+            Position += Velocity;
 
-                base.Update(deltaTime, currentScene);
+            base.Update(deltaTime, currentScene);
            
         }
 
@@ -92,12 +92,12 @@ namespace MathForGames
         /// <param name="currentScene"></param>
         public override void OnCollision(Actor actor, Scene currentScene)
         {
-            //if (actor is Enemy)
-            //{
-            //    UIText DeathMessage = new UIText(500, 100, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
-            //    currentScene.AddUIElement(DeathMessage);
-            //    currentScene.RemoveActor(this);
-            //}
+            if (actor is Enemy)
+            {
+                UIText DeathMessage = new UIText(500, 100, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
+                currentScene.AddUIElement(DeathMessage);
+                currentScene.RemoveActor(this);
+            }
         }
     }
 }

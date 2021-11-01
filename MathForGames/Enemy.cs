@@ -50,9 +50,9 @@ namespace MathForGames
 
             //Once target it in sight enemy moves
             if (GetTargetInSight())
-                base.Translate(Velocity.X, Velocity.Y);
+                Position += Velocity;
 
-            
+
 
             base.Update(deltaTime, currentScene);
         }
