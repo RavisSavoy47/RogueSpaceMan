@@ -115,6 +115,8 @@ namespace MathForGames
 
         public void UpdateTransforms()
         {
+            _localTransform = _translation * _rotation * _scale;
+
             if (Parent != null)
                 _globalTransform = _parent._globalTransform * _localTransform;
             else
@@ -185,9 +187,13 @@ namespace MathForGames
 
         public virtual void Update(float deltaTime, Scene currentScene)
         {
-            Rotate(.04f);
 
-            _localTransform = _translation * _rotation * _scale;
+            foreach(Actor child in _children)
+            {
+                Rotate(deltaTime);
+                child.Rotate(2 * deltaTime);
+            }
+           
             Console.WriteLine(_name + ": " + LocalPosition.X + ", " + LocalPosition.Y);
             UpdateTransforms();
         }

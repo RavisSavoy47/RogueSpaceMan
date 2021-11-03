@@ -10,7 +10,9 @@
     <None Remove="enemy.png" />
     <None Remove="Images\sun.png" />
     <None Remove="player.png" />
-    <None Remove="Solar System\mercury.png" />
+    <None Remove="Solar System\kingKai.png" />
+    <None Remove="Solar System\moon.png" />
+    <None Remove="Solar System\sun.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +25,7 @@
     <Content Include="Images\player.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Solar System\mercury.png">
+    <Content Include="Solar System\moon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Solar System\sun.png">
@@ -37,6 +39,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MathLibrary1\MathLibrary1.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Solar System\kingKai.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
