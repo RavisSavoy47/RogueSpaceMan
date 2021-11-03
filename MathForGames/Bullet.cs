@@ -9,8 +9,8 @@ namespace MathForGames
     class Bullet : Actor
     {
         private float _speed;
-        private Vector2 _velocity;
-        private Vector2 _bulletPosition;
+        private Vector3 _velocity;
+        private Vector3 _bulletPosition;
 
         public float Speed
         {
@@ -18,14 +18,14 @@ namespace MathForGames
             set { _speed = value; }
         }
 
-        public Vector2 Velocity
+        public Vector3 Velocity
         {
             get { return _velocity; }
             set { _velocity = value; }
         }
 
-        public Bullet(float x, float y, float velocityX, float velocityY, float speed, string name = "Bullet", string path = "")
-            : base(x, y, name, path)
+        public Bullet(float x, float y, float velocityX, float velocityY, float speed, string name = "Bullet", Shape shape = Shape.CUBE)
+            : base(x, y, name, shape)
         {
             _velocity.X = velocityX;
             _velocity.Y = velocityY;
@@ -40,7 +40,7 @@ namespace MathForGames
         public override void Update(float deltaTime, Scene currentScene)
         {
             
-            Vector2 moveDirection = new Vector2 (_velocity.X, _velocity.Y);
+            Vector3 moveDirection = new Vector3 (_velocity.X, _velocity.Y, _velocity.Z);
 
             Velocity = moveDirection.Normalized * Speed * deltaTime;
 

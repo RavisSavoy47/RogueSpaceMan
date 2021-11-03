@@ -79,21 +79,11 @@ namespace MathForGames
 
             Scene scene = new Scene();
 
-            Actor sun = new Actor(400, 220,"planet", "Solar System/sun.png");
-            sun.SetScale(130, 130);
-            scene.AddActor(sun);
+            Player player = new Player(0, 2, 10, "player", Shape.CUBE);
+            player.SetScale(1, 1, 1);
+            scene.AddActor(player);
 
-            Actor planet = new Actor(.6f, 1, "planet", "Solar System/kingKai.png");
-            planet.SetScale(.5f, .45f);
-            sun.AddChild(planet);
 
-            scene.AddActor(planet);
-
-            Actor moon = new Actor(.9f, .6f, "planet", "Solar System/moon.png");
-            moon.SetScale(.4f, .4f);
-            planet.AddChild(moon);
-
-            scene.AddActor(moon);
 
             //Player player = new Player(380, 400, 200, "Player", "Images/player.png");
             //player.SetScale(50, 50);

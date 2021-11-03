@@ -100,9 +100,9 @@ namespace MathLibrary1
         /// <param name="lhs">The vector that is being scaled</param>
         /// <param name="scalor">The value to scale the vector by</param>
         /// <returns>The result of the vector scaling/returns>
-        public static Vector3 operator *(Vector3 lhs, float scalor)
+        public static Vector3 operator *(Vector3 lhs, float rhs)
         {
-            return new Vector3 { X = lhs.X * scalor, Y = lhs.Y * scalor, Z = lhs.Z * scalor };
+            return new Vector3 { X = lhs.X * rhs, Y = lhs.Y * rhs, Z = lhs.Z * rhs };
         }
 
         /// <summary>
@@ -111,9 +111,9 @@ namespace MathLibrary1
         /// <param name="lhs">The vector that is being scaled</param>
         /// <param name="scalor">The value to scale the vector by</param>
         /// <returns>The result of the vector scaling</returns>
-        public static Vector3 operator /(Vector3 lhs, float scalor)
+        public static Vector3 operator /(Vector3 lhs, float rhs)
         {
-            return new Vector3 { X = lhs.X / scalor, Y = lhs.Y / scalor, Z = lhs.Z / scalor };
+            return new Vector3 { X = lhs.X / rhs, Y = lhs.Y / rhs, Z = lhs.Z / rhs };
         }
 
         /// <summary>

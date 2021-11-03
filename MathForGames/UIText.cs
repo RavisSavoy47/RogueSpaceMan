@@ -25,7 +25,7 @@ namespace MathForGames
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <param name="text"></param>
-        public UIText(float x, float y, string name, Color color, int width, int height, int fontSize, string text = "") : base(x, y, name, "")
+        public UIText(float x, float y, string name, Color color, int width, int height, int fontSize, string text = "") : base(x, y, name)
         {
             Text = text;
             Width = width;

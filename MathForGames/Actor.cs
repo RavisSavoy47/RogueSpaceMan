@@ -209,7 +209,17 @@ namespace MathForGames
 
         public virtual void Draw()
         {
-           
+            System.Numerics.Vector3 position = new System.Numerics.Vector3(WorldPosition.X, WorldPosition.Y, WorldPosition.Z);
+
+            switch (_shape)
+            {
+                case Shape.CUBE:
+                    Raylib.DrawCube(position, Size.X, Size.Y, Size.Z, Color.BLUE);
+                    break;
+                case Shape.SPHERE:
+                    Raylib.DrawSphere(position, Size.X, Color.BLUE);
+                    break;
+            }
         }
 
         public virtual void End()
