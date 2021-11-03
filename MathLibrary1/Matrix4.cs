@@ -86,7 +86,7 @@ namespace MathLibrary1
         }
 
         /// <summary>
-        /// Creates a new matrix that has been scaled by teh given value
+        /// Creates a new matrix that has been scaled by the given value
         /// </summary>
         /// <param name="x">The value to use to scale the matrix in the x axis</param>
         /// <param name="y">The value to use to scale the matrix in the y axis</param>
