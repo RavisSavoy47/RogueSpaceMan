@@ -14,6 +14,7 @@ namespace MathForGames
         private static int _currentSceneIndex;
         private Scene[] _scenes = new Scene[0];
         private Stopwatch _stopwatch = new Stopwatch();
+        private Camera3D _camera = new Camera3D();
 
         /// <summary>
         /// Called to begin the application
@@ -49,6 +50,20 @@ namespace MathForGames
             End();
         }
 
+        private void InitializeCamera()
+        {
+            // Camera position
+            _camera.position = new System.Numerics.Vector3(0, 10, 10);
+            // Point the camera is focused on
+            _camera.target = new System.Numerics.Vector3(0, 0, 0);
+            // Camera up vector (rotation towards target)
+            _camera.up = new System.Numerics.Vector3(0, 1, 0);
+            // Camera feild of view
+            _camera.fovy = 45;
+            // Camera mode type
+            _camera.projection = CameraProjection.CAMERA_PERSPECTIVE; 
+        }
+
         /// <summary>
         /// Called when the application starts 
         /// </summary>
@@ -59,6 +74,8 @@ namespace MathForGames
             //Create a window using raylib
             Raylib.InitWindow(800, 450, "Math For Games");
             Raylib.SetTargetFPS(60);
+
+            InitializeCamera();
 
             Scene scene = new Scene();
 
@@ -132,11 +149,14 @@ namespace MathForGames
         private void Draw()
         {
             Raylib.BeginDrawing();
-            Raylib.ClearBackground(Color.SKYBLUE);
+            Raylib.BeginMode3D(_camera);
+            Raylib.DrawGrid(50, 1);
+            Raylib.ClearBackground(Color.RAYWHITE);
             //Adds all actors icons to buffer
             _scenes[_currentSceneIndex].Draw();
             _scenes[_currentSceneIndex].DrawUI();
 
+            Raylib.EndMode3D();
             Raylib.EndDrawing();
         }
 

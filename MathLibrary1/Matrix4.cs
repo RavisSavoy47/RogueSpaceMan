@@ -32,7 +32,7 @@ namespace MathLibrary1
 
 
         /// <summary>
-        /// Creates a new matrix that has been rotated by the given value in radians
+        /// Creates a new matrix that has been rotated by the x value in radians
         /// </summary>
         /// <param name="radians">The result of the rotation</param>
         public static Matrix4 CreateRotationX(float radians)
@@ -46,6 +46,10 @@ namespace MathLibrary1
                 );
         }
 
+        /// <summary>
+        /// Creates a new matrix that has been rotated by the y value in radians
+        /// </summary>
+        /// <param name="radians">The result of the rotation</param>
         public static Matrix4 CreateRotationY(float radians)
         {
             return new Matrix4
@@ -57,6 +61,10 @@ namespace MathLibrary1
                 );
         }
 
+        /// <summary>
+        /// Creates a new matrix that has been rotated by the z value in radians
+        /// </summary>
+        /// <param name="radians">The result of the rotation</param>
         public static Matrix4 CreateRotationZ(float radians)
         {
             return new Matrix4
@@ -167,5 +175,9 @@ namespace MathLibrary1
                 );
         }
 
+        //public static Vector3 operator *(Matrix3 lhs, Vector3 rhs)
+        //{
+        //    return new Vector3();
+        //}
     }
 }
