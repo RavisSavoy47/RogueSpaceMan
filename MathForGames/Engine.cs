@@ -79,11 +79,20 @@ namespace MathForGames
 
             Scene scene = new Scene();
             
-            Player player = new Player(1, 1, 1, 5, "player", Shape.CUBE);
+            Player player = new Player(1, 1, 1, 15, "player", Shape.CUBE);
             player.SetScale(1, 1, 1);
             scene.AddActor(player);
-
             _player = player;
+            //CircleCollider playerCollider = new CircleCollider(1, player);
+            //player.Collider = playerCollider;
+
+            Enemy enemy1 = new Enemy(5, 1, 5, 10, 100, 100, player, "Enemy", Shape.SPHERE);
+            enemy1.SetScale(1, 1, 1);
+            scene.AddActor(enemy1);
+            //CircleCollider enemy1Collider = new CircleCollider(1, enemy1);
+            //enemy1.Collider = enemy1Collider;
+            //enemy1.SetScale(50, 50);
+
             //Player player = new Player(380, 400, 200, "Player", "Images/player.png");
             //player.SetScale(50, 50);
             //AABBCollider playerCollider = new AABBCollider(50, 50, player);
@@ -94,26 +103,8 @@ namespace MathForGames
             //AABBCollider enemy1Collider = new AABBCollider(50, 50, enemy1);
             //enemy1.Collider = enemy1Collider;
 
-            //Enemy enemy2 = new Enemy(350, 30, 100, 500, 2, player, "Enemy", "Images/enemy.png");
-            //enemy2.SetScale(50, 50);
-            //AABBCollider enemy2Collider = new AABBCollider(50, 50, enemy2);
-            //enemy2.Collider = enemy2Collider;
-
-            //Enemy enemy3 = new Enemy(400, 30, 100, 500, 2, player, "Enemy", "Images/enemy.png");
-            //enemy3.SetScale(50, 50);
-            //AABBCollider enemy3Collider = new AABBCollider(50, 50, enemy3);
-            //enemy3.Collider = enemy3Collider;
-
-            //Enemy enemy4 = new Enemy(450, 30, 200, 350, 2, player, "Enemy", "Images/enemy.png");
-            //enemy4.SetScale(50, 50);
-            //AABBCollider enemy4Collider = new AABBCollider(50, 50, enemy4);
-            //enemy4.Collider = enemy4Collider;
-
             //scene.AddActor(player);
             //scene.AddActor(enemy1);
-            //scene.AddActor(enemy2);
-            //scene.AddActor(enemy3);
-            //scene.AddActor(enemy4);
 
             _currentSceneIndex = AddScene(scene);
             _scenes[_currentSceneIndex].Start();

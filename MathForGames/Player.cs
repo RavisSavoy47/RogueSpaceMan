@@ -57,11 +57,12 @@ namespace MathForGames
             {
                 Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 100, "Bullet");
                 bullet.SetScale(1, 1, 1);
- 
-                CircleCollider bulletCollider = new CircleCollider(1, bullet);
-                bullet.Collider = bulletCollider;
-                currentScene.AddActor(bullet);                
-                
+                currentScene.AddActor(bullet);
+
+                //CircleCollider bulletCollider = new CircleCollider(1, bullet);
+                //bullet.Collider = bulletCollider;
+
+
                 _timer = 0;
             }
 
