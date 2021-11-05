@@ -15,7 +15,7 @@ namespace MathForGames
         private Scene[] _scenes = new Scene[0];
         private Stopwatch _stopwatch = new Stopwatch();
         private Camera3D _camera = new Camera3D();
-
+        private Player _player;
         /// <summary>
         /// Called to begin the application
         /// </summary>
@@ -78,13 +78,12 @@ namespace MathForGames
             InitializeCamera();
 
             Scene scene = new Scene();
-
-            Player player = new Player(0, 2, 10, "player", Shape.CUBE);
+            
+            Player player = new Player(1, 1, 1, 5, "player", Shape.CUBE);
             player.SetScale(1, 1, 1);
             scene.AddActor(player);
 
-
-
+            _player = player;
             //Player player = new Player(380, 400, 200, "Player", "Images/player.png");
             //player.SetScale(50, 50);
             //AABBCollider playerCollider = new AABBCollider(50, 50, player);
@@ -126,6 +125,11 @@ namespace MathForGames
         /// </summary>
         private void Update(float deltaTime)
         {
+            // Camera position on the player position
+            _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 10, _player.WorldPosition.Z + 10);
+            // Point the camera is focused on the player position
+            _camera.target = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y, _player.WorldPosition.Z);
+
             _scenes[_currentSceneIndex].Update(deltaTime, _scenes[_currentSceneIndex]);
             _scenes[_currentSceneIndex].UpdateUI(deltaTime, _scenes[_currentSceneIndex]);
 

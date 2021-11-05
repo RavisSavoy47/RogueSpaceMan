@@ -26,9 +26,9 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Enemy(float x, float y, float speed, float maxSightDistance, float maxViewAngle, 
+        public Enemy(float x, float y, float z, float speed, float maxSightDistance, float maxViewAngle, 
             Actor target, string name = "Enemy", Shape shape = Shape.CUBE)
-            : base(x, y, name, shape)
+            : base(x, y, z, name, shape)
         {
             _target = target;
             _speed = speed;

@@ -62,7 +62,7 @@ namespace MathForGames
 
             if (EnemyCount == 0 && !checkswin)
             {
-                UIText win = new UIText(200, 100, "WinBox", Color.BLACK, 70, 70, 15, "You Have Won!!!");
+                UIText win = new UIText(200, 100, 1, "WinBox", Color.BLACK, 70, 70, 15, "You Have Won!!!");
                 currentScene.AddUIElement(win);
                 checkswin = true;
             }

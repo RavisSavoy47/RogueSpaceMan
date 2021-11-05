@@ -24,11 +24,11 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Bullet(float x, float y, float velocityX, float velocityY, float speed, string name = "Bullet", Shape shape = Shape.CUBE)
-            : base(x, y, name, shape)
+        public Bullet(float x, float y, float z, float velocityX, float velocityZ, float speed, string name = "Bullet", Shape shape = Shape.CUBE)
+            : base(x, y, z, name, shape)
         {
             _velocity.X = velocityX;
-            _velocity.Y = velocityY;
+            _velocity.Z = velocityZ;
             _speed = speed;
         }
 
