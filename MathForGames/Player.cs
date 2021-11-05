@@ -47,15 +47,15 @@ namespace MathForGames
             //The input for bullet firing
             int bulletDirectionX = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT));
-            int bulletDirectionY = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_UP))
+            int bulletDirectionZ = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_UP))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_DOWN));
 
             //Gives the bullets a cooldown timer
             _timer += deltaTime;
 
-            if (bulletDirectionX != 0 && _timer >= .5 || bulletDirectionY != 0 && _timer >= .5 )
+            if (bulletDirectionX != 0 && _timer >= .5 || bulletDirectionZ != 0 && _timer >= .5 )
             {
-                Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, bulletDirectionX, bulletDirectionY, 100, "Bullet");
+                Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 100, "Bullet");
                 bullet.SetScale(1, 1, 1);
  
                 CircleCollider bulletCollider = new CircleCollider(10, bullet);
