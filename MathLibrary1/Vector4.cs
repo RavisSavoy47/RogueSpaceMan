@@ -115,6 +115,11 @@ namespace MathLibrary
             return new Vector4 { X = lhs.X * scalor, Y = lhs.Y * scalor, Z = lhs.Z * scalor, W = lhs.W* scalor };
         }
 
+        public static Vector4 operator *(float rhs, Vector4 lhs)
+        {
+            return new Vector4 { X = lhs.X * rhs, Y = lhs.Y * rhs, Z = lhs.Z * rhs };
+        }
+
         /// <summary>
         /// Divides the vector's x and y values by the scalor
         /// </summary>

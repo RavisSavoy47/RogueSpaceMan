@@ -120,5 +120,11 @@ namespace MathLibrary
                 );
         }
 
+        public static Matrix3 operator *(Matrix3 lhs, Vector3 rhs)
+        {
+            return new Matrix3(lhs.M00 * rhs.X, lhs.M01 * rhs.X, lhs.M02 * rhs.X,
+                               lhs.M10 * rhs.Y, lhs.M11 * rhs.Y, lhs.M12 * rhs.Y,
+                               lhs.M20 * rhs.Z, lhs.M21 * rhs.Z, lhs.M22 * rhs.Z);
+        }
     }
 }
