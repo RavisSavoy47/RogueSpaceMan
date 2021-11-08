@@ -87,12 +87,15 @@ namespace MathForGames
             scene.AddActor(player);
             _player = player;
 
-            AABBCollider playerCollider = new AABBCollider(.5f, .5f, player);
-            player.Collider = playerCollider;
+            player.Collider = new AABBCollider(.5f, .5f, player);
 
-            Player tankGun = new Player(1, 1, 4, 1, "planet", Shape.CUBE);
-            tankGun.SetScale(1, 1, 1);
-            player.AddChild(tankGun);
+            Player tinyMan = new Player(1, 1, 4, 1, "planet", Shape.CUBE);
+            tinyMan.SetScale(1, 1, 1);
+            tinyMan.SetColor(new Vector4(200, 10, 25, 255));
+            player.AddChild(tinyMan);
+            scene.AddActor(tinyMan);
+
+            tinyMan.Collider = new AABBCollider(.5f, .5f, player);
 
             Enemy enemy1 = new Enemy(10, 1, 5, 5, 100, 100, player, "Enemy", Shape.SPHERE);
             enemy1.SetScale(1, 1, 1);

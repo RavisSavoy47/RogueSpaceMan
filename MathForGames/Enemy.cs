@@ -52,7 +52,9 @@ namespace MathForGames
             if (GetTargetInSight())
             {
                 LocalPosition += Velocity;
+
                 LookAt(_target.WorldPosition);
+
                 if (Velocity.Magnitude > 0)
                     Forward = Velocity.Normalized;
             }
