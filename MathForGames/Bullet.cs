@@ -57,8 +57,8 @@ namespace MathForGames
         public override void Draw()
         {
             base.Draw();
-            //Collider.Draw();
-            //Raylib.DrawCircleLines((int)LocalPosition.X, (int)LocalPosition.Y, 15, Color.BLACK);
+            Collider.Draw();
+            
         }
 
         public override void OnCollision(Actor actor, Scene currentScene)

@@ -59,8 +59,8 @@ namespace MathForGames
                 bullet.SetScale(1, 1, 1);
                 currentScene.AddActor(bullet);
 
-                //CircleCollider bulletCollider = new CircleCollider(1, bullet);
-                //bullet.Collider = bulletCollider;
+                CircleCollider bulletCollider = new CircleCollider(1, bullet);
+                bullet.Collider = bulletCollider;
 
 
                 _timer = 0;
@@ -86,7 +86,7 @@ namespace MathForGames
         public override void Draw()
         {
             base.Draw();
-            //Collider.Draw();
+            Collider.Draw();
         }
 
         /// <summary>
