@@ -6,7 +6,7 @@ using Raylib_cs;
 
 namespace MathForGames
 {
-    class CircleCollider : Collider
+    class SphereCollider : Collider
     {
         public float _collisionRadius;
 
@@ -16,12 +16,12 @@ namespace MathForGames
             set { _collisionRadius = value; }
         }
 
-        public CircleCollider(float collisionRadius, Actor owner) : base(owner, ColliderType.CIRCLE)
+        public SphereCollider(float collisionRadius, Actor owner) : base(owner, ColliderType.CIRCLE)
         {
             _collisionRadius = collisionRadius;
         }
 
-        public override bool CheckCollisionCircle(CircleCollider other)
+        public override bool CheckCollisionCircle(SphereCollider other)
         {
             if (other.Owner == Owner)
                 return false;

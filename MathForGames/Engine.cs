@@ -81,33 +81,26 @@ namespace MathForGames
             
             Player player = new Player(1, 1, 1, 15, "player", Shape.CUBE);
             player.SetScale(1, 1, 1);
+            //max color value 255
+            //last color slot is transprancy
+            player.SetColor(new Vector4(86, 98, 3, 255));
             scene.AddActor(player);
             _player = player;
 
             SphereCollider playerCollider = new SphereCollider(1, player);
             player.Collider = playerCollider;
 
-            Enemy enemy1 = new Enemy(50, 1, 5, 5, 100, 100, player, "Enemy", Shape.SPHERE);
+            Player tankGun = new Player(1, 1, 4, 1, "planet", Shape.CUBE);
+            tankGun.SetScale(1, 1, 1);
+            player.AddChild(tankGun);
+
+            Enemy enemy1 = new Enemy(5, 1, 5, 5, 100, 100, player, "Enemy", Shape.SPHERE);
             enemy1.SetScale(1, 1, 1);
             scene.AddActor(enemy1);
 
             SphereCollider enemy1Collider = new SphereCollider(1, enemy1);
             enemy1.Collider = enemy1Collider;
 
-            //enemy1.SetScale(50, 50);
-
-            //Player player = new Player(380, 400, 200, "Player", "Images/player.png");
-            //player.SetScale(50, 50);
-            //AABBCollider playerCollider = new AABBCollider(50, 50, player);
-            //player.Collider = playerCollider;
-
-            //Enemy enemy1 = new Enemy(300, 30, 200, 350, 2, player, "Enemy", "Images/enemy.png");
-            //enemy1.SetScale(50, 50);
-            //AABBCollider enemy1Collider = new AABBCollider(50, 50, enemy1);
-            //enemy1.Collider = enemy1Collider;
-
-            //scene.AddActor(player);
-            //scene.AddActor(enemy1);
 
             _currentSceneIndex = AddScene(scene);
             _scenes[_currentSceneIndex].Start();

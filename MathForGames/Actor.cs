@@ -26,6 +26,12 @@ namespace MathForGames
         private Actor[] _children = new Actor[0];
         private Actor _parent;
         private Shape _shape;
+        private Color _color;
+
+        public Color ShapeColor
+        {
+            get { return _color; }
+        }
 
         /// <summary>
         /// True if the start fuction has been called for this actor
@@ -105,6 +111,11 @@ namespace MathForGames
         public Vector3 Forward
         {
             get { return new Vector3 (_rotation.M02, _rotation.M12, _rotation.M22); }
+            set 
+            { 
+                Vector3 point = value.Normalized + WorldPosition;
+                LookAt(point);
+            }
         }
         
         public Collider Collider
@@ -209,27 +220,25 @@ namespace MathForGames
 
         public virtual void Draw()
         {
-            System.Numerics.Vector3 position = new System.Numerics.Vector3(WorldPosition.X, WorldPosition.Y, WorldPosition.Z);
+            System.Numerics.Vector3 startPos = new System.Numerics.Vector3(WorldPosition.X, WorldPosition.Y, WorldPosition.Z);
+            System.Numerics.Vector3 endPos = new System.Numerics.Vector3(WorldPosition.X + Forward.X * 50, WorldPosition.Y + Forward.Y, WorldPosition.Z + Forward.Z * 50);
 
             switch (_shape)
             {
                 case Shape.CUBE:
-                    Raylib.DrawCube(position, Size.X, Size.Y, Size.Z, Color.BLUE);
+                    Raylib.DrawCube(startPos, Size.X, Size.Y, Size.Z, ShapeColor);
                     break;
                 case Shape.SPHERE:
-                    Raylib.DrawSphere(position, Size.X, Color.BLUE);
+                    Raylib.DrawSphere(startPos, Size.X, ShapeColor);
                     break;
             }
+                //Draw a line to represent the actors forward vector
+                Raylib.DrawLine3D(startPos, endPos, Color.YELLOW);
         }
 
         public virtual void End()
         {
 
-        }
-
-        public virtual void OnCollision(Actor actor, Scene currentScene)
-        {
-            
         }
 
         /// <summary>
@@ -369,5 +378,20 @@ namespace MathForGames
                                     newXAxis.Z, newYAxis.Z, direction.Z, 0,
                                     0, 0, 0, 1);
         }
+        public virtual void OnCollision(Actor actor, Scene currentScene)
+        {
+
+        }
+
+        public void SetColor(Color color)
+        {
+            _color = color;
+        }
+
+        public void SetColor(Vector4 colorValue)
+        {
+            _color = new Color((int)colorValue.X, (int)colorValue.Y, (int)colorValue.Z, (int)colorValue.W);
+        }
+
     }
 }
