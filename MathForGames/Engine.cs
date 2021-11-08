@@ -87,14 +87,14 @@ namespace MathForGames
             scene.AddActor(player);
             _player = player;
 
-            SphereCollider playerCollider = new SphereCollider(1, player);
+            AABBCollider playerCollider = new AABBCollider(.5f, .5f, player);
             player.Collider = playerCollider;
 
             Player tankGun = new Player(1, 1, 4, 1, "planet", Shape.CUBE);
             tankGun.SetScale(1, 1, 1);
             player.AddChild(tankGun);
 
-            Enemy enemy1 = new Enemy(5, 1, 5, 5, 100, 100, player, "Enemy", Shape.SPHERE);
+            Enemy enemy1 = new Enemy(10, 1, 5, 5, 100, 100, player, "Enemy", Shape.SPHERE);
             enemy1.SetScale(1, 1, 1);
             scene.AddActor(enemy1);
 
@@ -113,7 +113,7 @@ namespace MathForGames
         private void Update(float deltaTime)
         {
             // Camera position on the player position
-            _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 10, _player.WorldPosition.Z + 10);
+            _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 15, _player.WorldPosition.Z + 15);
             // Point the camera is focused on the player position
             _camera.target = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y, _player.WorldPosition.Z);
 

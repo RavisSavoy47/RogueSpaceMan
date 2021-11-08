@@ -98,9 +98,9 @@ namespace MathForGames
         {
             if (actor is Enemy)
             {
-                //UIText DeathMessage = new UIText(500, 100, 1, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
-                //currentScene.AddUIElement(DeathMessage);
-                //currentScene.RemoveActor(this);
+                UIText DeathMessage = new UIText(500, 100, 1, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
+                currentScene.AddUIElement(DeathMessage);
+                currentScene.RemoveActor(this);
             }
         }
     }

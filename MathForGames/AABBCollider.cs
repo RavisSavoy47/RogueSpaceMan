@@ -28,7 +28,7 @@ namespace MathForGames
             get { return _height; }
             set { _height = value; }
         }
-
+        
         /// <summary>
         /// The farthest left x position of this collider
         /// </summary>
@@ -86,7 +86,7 @@ namespace MathForGames
                 return false;
 
             //Return true if there is an overlap between boxes
-            if(other.Left <= Right &&
+            if (other.Left <= Right &&
                other.Top <= Bottom &&
                Left <= other.Right &&
                Top <= other.Bottom)
@@ -105,7 +105,8 @@ namespace MathForGames
 
         public override void Draw()
         {
-            Raylib.DrawRectangleLines((int)Left, (int)Top, (int)Width, (int)Height, Color.BLACK);
+            Raylib.DrawCube(new System.Numerics.Vector3(Owner.WorldPosition.X, Owner.WorldPosition.Y, Owner.WorldPosition.Z), 1, 1, 1, Color.BLUE);
+            //Raylib.DrawRectangleLines((int)Left, (int)Top, (int)Width, (int)Height, Color.BLACK);
         }
     }
 }

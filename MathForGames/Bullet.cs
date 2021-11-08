@@ -10,7 +10,7 @@ namespace MathForGames
     {
         private float _speed;
         private Vector3 _velocity;
-        private Vector3 _bulletPosition;
+        private float _timer = 0;
 
         public float Speed
         {
@@ -47,6 +47,7 @@ namespace MathForGames
             LocalPosition += Velocity;
 
             base.Update(deltaTime, currentScene);
+
 
             //The range of bullets
             //if (Position.X - _bulletPosition.X > 150 || Position.Y - _bulletPosition.Y > 150 ||

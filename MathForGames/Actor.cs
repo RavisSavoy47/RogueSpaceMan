@@ -233,7 +233,7 @@ namespace MathForGames
                     break;
             }
                 //Draw a line to represent the actors forward vector
-                Raylib.DrawLine3D(startPos, endPos, Color.YELLOW);
+                Raylib.DrawLine3D(startPos, endPos, Color.RED);
         }
 
         public virtual void End()
