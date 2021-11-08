@@ -324,13 +324,18 @@ namespace MathForGames
             if (direction.Magnitude == 0)
                 direction = new Vector3(0, 0, 1);
 
-            //Adds a up vector
+            //Adds an upwards vector
             Vector3 alignAxis = new Vector3(0, 1, 0);
 
             Vector3 newYAxis = new Vector3(0, 1, 0);
             Vector3 newXAxis = new Vector3(1, 0, 0);
 
+            if(Math.Abs(direction.Y) > 0 && direction.X == 0 && direction.Z == 0)
+            {
+                alignAxis = new Vector3(1, 0, 0);
 
+
+            }
         }
     }
 }

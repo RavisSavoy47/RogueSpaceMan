@@ -84,14 +84,14 @@ namespace MathForGames
             scene.AddActor(player);
             _player = player;
 
-            CircleCollider playerCollider = new CircleCollider(1, player);
+            SphereCollider playerCollider = new SphereCollider(1, player);
             player.Collider = playerCollider;
 
             Enemy enemy1 = new Enemy(50, 1, 5, 5, 100, 100, player, "Enemy", Shape.SPHERE);
             enemy1.SetScale(1, 1, 1);
             scene.AddActor(enemy1);
 
-            CircleCollider enemy1Collider = new CircleCollider(1, enemy1);
+            SphereCollider enemy1Collider = new SphereCollider(1, enemy1);
             enemy1.Collider = enemy1Collider;
 
             //enemy1.SetScale(50, 50);

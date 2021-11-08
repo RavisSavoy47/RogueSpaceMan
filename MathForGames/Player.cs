@@ -59,7 +59,7 @@ namespace MathForGames
                 bullet.SetScale(1, 1, 1);
                 currentScene.AddActor(bullet);
 
-                CircleCollider bulletCollider = new CircleCollider(1, bullet);
+                SphereCollider bulletCollider = new SphereCollider(1, bullet);
                 bullet.Collider = bulletCollider;
 
 

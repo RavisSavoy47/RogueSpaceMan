@@ -58,7 +58,6 @@ namespace MathForGames
         {
             base.Draw();
             Collider.Draw();
-            
         }
 
         public override void OnCollision(Actor actor, Scene currentScene)
