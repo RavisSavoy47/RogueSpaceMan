@@ -175,12 +175,12 @@ namespace MathLibrary
                 );
         }
 
-        public static Matrix4 operator *(Matrix4 lhs, Vector4 rhs)
+        public static Vector4 operator *(Matrix4 lhs, Vector4 rhs)
         {
-            return new Matrix4(lhs.M00 * rhs.X, lhs.M01 * rhs.X, lhs.M02 * rhs.X, lhs.M03 * rhs.X,
-                               lhs.M10 * rhs.Y, lhs.M11 * rhs.Y, lhs.M12 * rhs.Y, lhs.M13 * rhs.Y,
-                               lhs.M20 * rhs.Z, lhs.M21 * rhs.Z, lhs.M22 * rhs.Z, lhs.M23 * rhs.Z,
-                               lhs.M30 * rhs.W, lhs.M31 * rhs.W, lhs.M32 * rhs.W, lhs.M33 * rhs.W);
+            return new Vector4(lhs.M00 * rhs.X + lhs.M01 * rhs.X + lhs.M02 * rhs.X + lhs.M03 * rhs.X,
+                               lhs.M10 * rhs.Y + lhs.M11 * rhs.Y + lhs.M12 * rhs.Y + lhs.M13 * rhs.Y,
+                               lhs.M20 * rhs.Z + lhs.M21 * rhs.Z + lhs.M22 * rhs.Z + lhs.M23 * rhs.Z,
+                               lhs.M30 * rhs.W + lhs.M31 * rhs.W + lhs.M32 * rhs.W + lhs.M33 * rhs.W);
         }
     }
 }
