@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathForGames", "MathForGames\MathForGames.csproj", "{264872AA-778A-42DB-B1F9-10986E647933}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathLibrary1", "MathLibrary1\MathLibrary1.csproj", "{06624DF9-1342-4D91-9355-489D07026996}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathLibrary", "MathLibrary1\MathLibrary.csproj", "{06624DF9-1342-4D91-9355-489D07026996}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{2731BE78-C467-4E92-9381-4F6B9EA68963}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{06624DF9-1342-4D91-9355-489D07026996}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06624DF9-1342-4D91-9355-489D07026996}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06624DF9-1342-4D91-9355-489D07026996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2731BE78-C467-4E92-9381-4F6B9EA68963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2731BE78-C467-4E92-9381-4F6B9EA68963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2731BE78-C467-4E92-9381-4F6B9EA68963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2731BE78-C467-4E92-9381-4F6B9EA68963}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

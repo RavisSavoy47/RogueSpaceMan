@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Diagnostics;
-using MathLibrary1;
+using MathLibrary;
 using Raylib_cs;
 
 namespace MathForGames

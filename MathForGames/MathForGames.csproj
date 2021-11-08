@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MathLibrary1\MathLibrary1.csproj" />
+    <ProjectReference Include="..\MathLibrary1\MathLibrary.csproj" />
   </ItemGroup>
 
 </Project>

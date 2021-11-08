@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MathLibrary1
+namespace MathLibrary
 {
     public struct Vector2
     {
