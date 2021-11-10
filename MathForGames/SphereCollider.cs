@@ -42,18 +42,18 @@ namespace MathForGames
                 return false;
 
             //Get the direction from this collider to th eAABB
-            Vector3 direction = Owner.LocalPosition - other.Owner.LocalPosition;
+            Vector3 direction = Owner.WorldPosition - other.Owner.WorldPosition;
 
             //Clamp the direction vector to be within the bounds of the AABB
             direction.X = Math.Clamp(direction.X, -other.Width / 2, other.Width / 2);
             direction.Y = Math.Clamp(direction.Y, -other.Height / 2, other.Height / 2);
-            direction.Z = Math.Clamp(direction.Z, -other.Height / 2, other.Height / 2);
+            direction.Z = Math.Clamp(direction.Z, -other.Length / 2, other.Length / 2);
 
             //Add the direction vector to the AABB center to get teh closest point to the circle
-            Vector3 closestPoint = other.Owner.LocalPosition + direction;
+            Vector3 closestPoint = other.Owner.WorldPosition + direction;
 
             //Find teh distance from the circle's center to the closest point
-            float distanceFromClosestPoint = Vector3.Distance(Owner.LocalPosition, closestPoint);
+            float distanceFromClosestPoint = Vector3.Distance(Owner.WorldPosition, closestPoint);
 
             //Return whether or not teh distance is less than the circle's radius
             return distanceFromClosestPoint <= CollisionRadius;
@@ -61,7 +61,7 @@ namespace MathForGames
         
         public override void Draw()
         {
-            Raylib.DrawSphere(new System.Numerics.Vector3(Owner.WorldPosition.X, Owner.WorldPosition.Y, Owner.WorldPosition.Z), CollisionRadius, Color.GOLD);
+            Raylib.DrawSphere(new System.Numerics.Vector3(Owner.WorldPosition.X, Owner.WorldPosition.Y, Owner.WorldPosition.Z), CollisionRadius, new Color(200, 130, 20, 100));
         }
     }
 }

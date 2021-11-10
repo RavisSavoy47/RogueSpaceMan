@@ -55,7 +55,7 @@ namespace MathForGames
             if (bulletDirectionX != 0 && _timer >= .5 || bulletDirectionZ != 0 && _timer >= .5 )
             {
                 Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 10, "Bullet", Shape.SPHERE);
-                bullet.SetScale(.5f, .5f, .5f);
+                bullet.SetScale(.15f, .15f, .15f);
                 bullet.SetColor(new Vector4(16, 23, 19, 255));
                 currentScene.AddActor(bullet);
 
@@ -98,6 +98,8 @@ namespace MathForGames
         {
             if (actor is Enemy)
             {
+                Velocity *= -1;
+
                 //UIText DeathMessage = new UIText(500, 100, 1, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
                 //currentScene.AddUIElement(DeathMessage);
                 //currentScene.RemoveActor(this);

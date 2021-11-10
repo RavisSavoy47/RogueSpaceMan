@@ -87,24 +87,23 @@ namespace MathForGames
             scene.AddActor(player);
             _player = player;
 
-            player.Collider = new AABBCollider(.5f, .5f, .5f, player);
+            player.Collider = new AABBCollider(2, 2, 2, player);
 
             Enemy enemy1 = new Enemy(10, 1, 5, 5, 10, 100, player, "Enemy", Shape.SPHERE);
             enemy1.SetScale(1, 1, 1);
             scene.AddActor(enemy1);
             enemy1.SetColor(new Vector4(26, 78, 6, 255));
-            SphereCollider enemy1Collider = new SphereCollider(.5f, enemy1);
-            enemy1.Collider = enemy1Collider;
+
+            enemy1.Collider = new SphereCollider(1.5f, enemy1);
 
 
             //Follows the player and shoot the enemy if the enemy is in sight
             Companion tinyMan = new Companion(1, 1, 4, 10, 11, 400, enemy1, player, "planet", Shape.CUBE);
             tinyMan.SetScale(1, 1, 1);
             tinyMan.SetColor(new Vector4(200, 10, 25, 255));
-            //player.AddChild(tinyMan);
             scene.AddActor(tinyMan);
 
-            tinyMan.Collider = new AABBCollider(.5f, .5f, .5f, player);
+            tinyMan.Collider = new AABBCollider(1.5f, 1.5f, 1.5f, tinyMan);
 
 
 

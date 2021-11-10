@@ -10,7 +10,7 @@ namespace MathForGames
     {
         private float _width;
         private float _height;
-        private float _depth;
+        private float _length;
 
         /// <summary>
         /// The size of thsi collider on the x axis
@@ -30,10 +30,10 @@ namespace MathForGames
             set { _height = value; }
         }
 
-        public float Depth
+        public float Length
         {
-            get { return _depth; }
-            set { _depth = value; }
+            get { return _length; }
+            set { _length = value; }
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace MathForGames
         {
             get
             {
-                return Owner.LocalPosition.Y + Depth / 2;
+                return Owner.LocalPosition.Z - Length / 2;
             }
         }
 
@@ -92,22 +92,15 @@ namespace MathForGames
         {
             get
             {
-                return Owner.LocalPosition.Y + Depth / 2;
+                return Owner.LocalPosition.Z + Length / 2;
             }
         }
 
-        public AABBCollider(float width, float height, float depth, Actor owner) : base(owner, ColliderType.AABB)
+        public AABBCollider(float width, float height, float length, Actor owner) : base(owner, ColliderType.AABB)
         {
             _width = width;
             _height = height;
-            _depth = depth;
-        }
-
-        public override void Update()
-        {
-            _width = Owner.WorldPosition.X;
-            _height = Owner.WorldPosition.Y;
-            _depth = Owner.WorldPosition.Z;
+            _length = length;
         }
 
         public override bool CheckCollisionAABB(AABBCollider other)
@@ -121,8 +114,8 @@ namespace MathForGames
                other.Top <= Bottom &&
                Left <= other.Right &&
                Top <= other.Bottom &&
-               Front <= other.Back &&
-               Back <= other.Front)
+               other.Front <= Back &&
+               Front <= other.Back)
             {
                 return true;
             }
@@ -138,7 +131,7 @@ namespace MathForGames
 
         public override void Draw()
         {
-            Raylib.DrawCube(new System.Numerics.Vector3(Owner.WorldPosition.X, Owner.WorldPosition.Y, Owner.WorldPosition.Z), 1, 1, 1, Color.BLUE);
+            Raylib.DrawCube(new System.Numerics.Vector3(Owner.WorldPosition.X, Owner.WorldPosition.Y, Owner.WorldPosition.Z), 1.5f, 1.5f, 1.5f, new Color(30, 200, 1, 100));           
             //Raylib.DrawRectangleLines((int)Left, (int)Top, (int)Width, (int)Height, Color.BLACK);
         }
     }

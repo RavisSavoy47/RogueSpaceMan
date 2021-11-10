@@ -12,9 +12,10 @@ namespace MathForGames
         private Vector3 _velocity;
         private float _timer = 0;
         public Actor _target;
-        public Player _friend;
+        public Actor _friend;
         private float _maxSightDistance;
         private float _maxViewAngle;
+        private float health = 5;
 
         public float Speed
         {
@@ -28,7 +29,7 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Companion(float x, float y, float z, float speed, float maxSightDistance, float maxViewAngle, Actor target, Player friend, string name = "Companion", Shape shape = Shape.CUBE)
+        public Companion(float x, float y, float z, float speed, float maxSightDistance, float maxViewAngle, Actor target, Actor friend, string name = "Companion", Shape shape = Shape.CUBE)
             : base(x, y, z, name, shape)
         {
             _target = target;
@@ -66,11 +67,11 @@ namespace MathForGames
                 {
 
                     Bullet bullet = new Bullet(WorldPosition.X, WorldPosition.Y, WorldPosition.Z, Forward.X, Forward.Z, 10, "Bullet", Shape.SPHERE);
-                    bullet.SetScale(.5f, .5f, .5f);
+                    bullet.SetScale(.15f, .15f, .15f);
                     bullet.SetColor(new Vector4(16, 23, 19, 255));
                     currentScene.AddActor(bullet);
 
-                    SphereCollider bulletCollider = new SphereCollider(.005f, bullet);
+                    SphereCollider bulletCollider = new SphereCollider(.5f, bullet);
                     bullet.Collider = bulletCollider;
 
 
@@ -111,11 +112,18 @@ namespace MathForGames
         /// <summary>
         /// Checks if the player collides with an enemy
         /// </summary>
-        /// <param name="actor"></param>
+        /// <param name="actor"></param>a
         /// <param name="currentScene"></param>
         public override void OnCollision(Actor actor, Scene currentScene)
         {
-
+            if (actor is Actor friend)
+            {
+                LocalPosition -= Velocity;
+            }
+            else if (actor is Actor target)
+            {
+                Velocity *= -1;   
+            }
         }
     }
 }

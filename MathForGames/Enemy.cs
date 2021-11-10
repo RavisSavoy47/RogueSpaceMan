@@ -92,7 +92,15 @@ namespace MathForGames
 
         public override void OnCollision(Actor actor, Scene currentScene)
         {
-            Console.WriteLine("Collision Occurred");
+            if(actor is Player)
+            {
+                Velocity *= -1;
+            }
+
+            if(actor is Companion)
+            {
+                Velocity *= -1;
+            }
         }
     }
 }
