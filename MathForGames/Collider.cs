@@ -55,5 +55,10 @@ namespace MathForGames
         {
 
         }
+
+        public virtual void Update()
+        {
+
+        }
     }
 }

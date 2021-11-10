@@ -79,7 +79,7 @@ namespace MathForGames
 
             Scene scene = new Scene();
             
-            Player player = new Player(1, 1, 1, 15, "player", Shape.CUBE);
+            Player player = new Player(1, 1, 1, 12, "player", Shape.CUBE);
             player.SetScale(1, 1, 1);
             //max color value 255
             //last color slot is transprancy
@@ -89,16 +89,16 @@ namespace MathForGames
 
             player.Collider = new AABBCollider(.5f, .5f, .5f, player);
 
-            Enemy enemy1 = new Enemy(10, 1, 5, 5, 100, 100, player, "Enemy", Shape.SPHERE);
+            Enemy enemy1 = new Enemy(10, 1, 5, 5, 10, 100, player, "Enemy", Shape.SPHERE);
             enemy1.SetScale(1, 1, 1);
             scene.AddActor(enemy1);
-
-            SphereCollider enemy1Collider = new SphereCollider(1, enemy1);
+            enemy1.SetColor(new Vector4(26, 78, 6, 255));
+            SphereCollider enemy1Collider = new SphereCollider(.5f, enemy1);
             enemy1.Collider = enemy1Collider;
 
 
-            //Follows the player and shoot sif a enemy is in sight
-            Companion tinyMan = new Companion(1, 1, 4, 14, 200, 360, enemy1, player, "planet", Shape.CUBE);
+            //Follows the player and shoot the enemy if the enemy is in sight
+            Companion tinyMan = new Companion(1, 1, 4, 10, 11, 400, enemy1, player, "planet", Shape.CUBE);
             tinyMan.SetScale(1, 1, 1);
             tinyMan.SetColor(new Vector4(200, 10, 25, 255));
             //player.AddChild(tinyMan);

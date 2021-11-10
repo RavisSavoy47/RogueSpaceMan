@@ -103,6 +103,13 @@ namespace MathForGames
             _depth = depth;
         }
 
+        public override void Update()
+        {
+            _width = Owner.WorldPosition.X;
+            _height = Owner.WorldPosition.Y;
+            _depth = Owner.WorldPosition.Z;
+        }
+
         public override bool CheckCollisionAABB(AABBCollider other)
         {
             //Return false if this owner is checking for a collision against itself
@@ -113,7 +120,9 @@ namespace MathForGames
             if (other.Left <= Right &&
                other.Top <= Bottom &&
                Left <= other.Right &&
-               Top <= other.Bottom)
+               Top <= other.Bottom &&
+               Front <= other.Back &&
+               Back <= other.Front)
             {
                 return true;
             }

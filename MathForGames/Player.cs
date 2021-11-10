@@ -11,7 +11,6 @@ namespace MathForGames
         private float _speed;
         private Vector3 _velocity;
         private float _timer = 0;
-        private float _bulletDistance;
 
         public float Speed
         {
@@ -55,11 +54,12 @@ namespace MathForGames
 
             if (bulletDirectionX != 0 && _timer >= .5 || bulletDirectionZ != 0 && _timer >= .5 )
             {
-                Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 10, "Bullet");
-                bullet.SetScale(1, 1, 1);
+                Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 10, "Bullet", Shape.SPHERE);
+                bullet.SetScale(.5f, .5f, .5f);
+                bullet.SetColor(new Vector4(16, 23, 19, 255));
                 currentScene.AddActor(bullet);
 
-                SphereCollider bulletCollider = new SphereCollider(1, bullet);
+                SphereCollider bulletCollider = new SphereCollider(.5f, bullet);
                 bullet.Collider = bulletCollider;
 
 

@@ -45,32 +45,37 @@ namespace MathForGames
         /// <param name="currentScene">Gets the currentScene from Scene</param>
         public override void Update(float deltaTime, Scene currentScene)
         {
+            //Follows the player
             Vector3 moveDirection = (_friend.LocalPosition - LocalPosition).Normalized;
 
             Velocity = moveDirection * Speed * deltaTime;
 
             LocalPosition += Velocity;
 
+            //Looks at the player
+            LookAt(_friend.WorldPosition);
+
             if (GetTargetInSight())
             {
                 //Gives the bullets a cooldown timer
                 _timer += deltaTime;
 
+                LookAt(_target.WorldPosition);
+
                 if (_target.WorldPosition.X != 0 && _timer >= .5 || _target.WorldPosition.Z != 0 && _timer >= .5)
                 {
-                    Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, _target.WorldPosition.X, _target.WorldPosition.Z, 10, "Bullet");
-                    bullet.SetScale(1, 1, 1);
+
+                    Bullet bullet = new Bullet(WorldPosition.X, WorldPosition.Y, WorldPosition.Z, Forward.X, Forward.Z, 10, "Bullet", Shape.SPHERE);
+                    bullet.SetScale(.5f, .5f, .5f);
+                    bullet.SetColor(new Vector4(16, 23, 19, 255));
                     currentScene.AddActor(bullet);
 
-                    SphereCollider bulletCollider = new SphereCollider(1, bullet);
+                    SphereCollider bulletCollider = new SphereCollider(.005f, bullet);
                     bullet.Collider = bulletCollider;
 
 
                     _timer = 0;
                 }
-
-                //Sets its forward to the targets position
-                LookAt(_target.WorldPosition);
             }
 
             base.Update(deltaTime, currentScene);
