@@ -69,7 +69,7 @@ namespace MathForGames
             if (actor is Enemy)
             {
                 currentScene.RemoveActor(this);
-                //currentScene.EnemyCount--;
+                currentScene.EnemyCount--;
             }
         }
     }

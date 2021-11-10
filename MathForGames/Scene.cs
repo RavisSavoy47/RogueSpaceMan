@@ -12,7 +12,7 @@ namespace MathForGames
         /// </summary>
         private Actor[] _actors;
         private Actor[] _UIElements;
-        private int _enemyCount = 1;
+        private int _enemyCount = 2;
         private bool checkswin;
 
         public int EnemyCount
@@ -67,8 +67,8 @@ namespace MathForGames
 
             if (EnemyCount == 0 && !checkswin)
             {
-                UIText win = new UIText(200, 100, 1, "WinBox", Color.BLACK, 70, 70, 15, "You Have Won!!!");
-                currentScene.AddUIElement(win);
+                //UIText win = new UIText(200, 100, 1, "WinBox", Color.BLACK, 70, 70, 15, "You Have Won!!!");
+                //currentScene.AddUIElement(win);
                 checkswin = true;
             }
         }

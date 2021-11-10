@@ -57,6 +57,9 @@ namespace MathForGames
             //Looks at the player
             LookAt(_friend.WorldPosition);
 
+            if (_target.Health == 0)
+                GetNewTarget(currentScene);
+
             if (GetTargetInSight())
             {
                 //Gives the bullets a cooldown timer
@@ -80,8 +83,7 @@ namespace MathForGames
                 }
             }
 
-            if (_target.Health == 0)
-                GetNewTarget(currentScene);
+            
                 
 
             base.Update(deltaTime, currentScene);

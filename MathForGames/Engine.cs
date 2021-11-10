@@ -96,6 +96,12 @@ namespace MathForGames
 
             enemy1.Collider = new SphereCollider(1, enemy1);
 
+            Enemy enemy2 = new Enemy(20, 1, 5, 5, 10, 100, player, "Enemy", Shape.SPHERE);
+            enemy2.SetScale(1, 1, 1);
+            scene.AddActor(enemy2);
+            enemy2.SetColor(new Vector4(26, 78, 6, 255));
+            
+            enemy2.Collider = new SphereCollider(1, enemy2);
 
             //Follows the player and shoot the enemy if the enemy is in sight
             Companion tinyMan = new Companion(1, 1, 4, 10, 11, 400, enemy1, player, "planet", Shape.CUBE);
@@ -105,7 +111,7 @@ namespace MathForGames
 
             tinyMan.Collider = new AABBCollider(1, 1, 1, tinyMan);
 
-            UIText text = new UIText(1, 1, 1, "TestTextBox", Color.BLACK, 70, 70, 15, "Health " + tinyMan.Health + " .");
+            UIText text = new UIText(1, 1, 1, "TestTextBox", Color.BLACK, 500, 50, 15, "Player's Health " + player.Health + " .");
             scene.AddUIElement(text);
 
             _currentSceneIndex = AddScene(scene);
