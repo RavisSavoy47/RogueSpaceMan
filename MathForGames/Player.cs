@@ -50,8 +50,8 @@ namespace MathForGames
             int bulletDirectionZ = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_UP))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_DOWN));
 
-            //Gives the bullets a cooldown timer
-            _timer += deltaTime;
+                //Gives the bullets a cooldown timer
+                _timer += deltaTime;
 
             if (bulletDirectionX != 0 && _timer >= .5 || bulletDirectionZ != 0 && _timer >= .5 )
             {
@@ -98,9 +98,9 @@ namespace MathForGames
         {
             if (actor is Enemy)
             {
-                UIText DeathMessage = new UIText(500, 100, 1, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
-                currentScene.AddUIElement(DeathMessage);
-                currentScene.RemoveActor(this);
+                //UIText DeathMessage = new UIText(500, 100, 1, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
+                //currentScene.AddUIElement(DeathMessage);
+                //currentScene.RemoveActor(this);
             }
         }
     }

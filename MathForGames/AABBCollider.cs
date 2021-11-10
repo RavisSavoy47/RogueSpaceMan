@@ -10,6 +10,7 @@ namespace MathForGames
     {
         private float _width;
         private float _height;
+        private float _depth;
 
         /// <summary>
         /// The size of thsi collider on the x axis
@@ -28,7 +29,13 @@ namespace MathForGames
             get { return _height; }
             set { _height = value; }
         }
-        
+
+        public float Depth
+        {
+            get { return _depth; }
+            set { _depth = value; }
+        }
+
         /// <summary>
         /// The farthest left x position of this collider
         /// </summary>
@@ -73,10 +80,27 @@ namespace MathForGames
             }
         }
 
-        public AABBCollider(float width, float height, Actor owner) : base(owner, ColliderType.AABB)
+        public float Front
+        {
+            get
+            {
+                return Owner.LocalPosition.Y + Depth / 2;
+            }
+        }
+
+        public float Back
+        {
+            get
+            {
+                return Owner.LocalPosition.Y + Depth / 2;
+            }
+        }
+
+        public AABBCollider(float width, float height, float depth, Actor owner) : base(owner, ColliderType.AABB)
         {
             _width = width;
             _height = height;
+            _depth = depth;
         }
 
         public override bool CheckCollisionAABB(AABBCollider other)

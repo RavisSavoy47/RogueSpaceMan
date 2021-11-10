@@ -11,8 +11,10 @@ namespace MathForGames
         private float _speed;
         private Vector3 _velocity;
         private float _timer = 0;
-        private float _bulletDistance;
         public Actor _target;
+        public Player _friend;
+        private float _maxSightDistance;
+        private float _maxViewAngle;
 
         public float Speed
         {
@@ -26,11 +28,14 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Companion(float x, float y, float z, float speed, Actor target, string name = "Companion", Shape shape = Shape.CUBE)
+        public Companion(float x, float y, float z, float speed, float maxSightDistance, float maxViewAngle, Actor target, Player friend, string name = "Companion", Shape shape = Shape.CUBE)
             : base(x, y, z, name, shape)
         {
             _target = target;
+            _friend = friend;
             _speed = speed;
+            _maxSightDistance = maxSightDistance;
+            _maxViewAngle = maxViewAngle;
         }
 
         /// <summary>
@@ -40,37 +45,42 @@ namespace MathForGames
         /// <param name="currentScene">Gets the currentScene from Scene</param>
         public override void Update(float deltaTime, Scene currentScene)
         {
+            Vector3 moveDirection = (_friend.LocalPosition - LocalPosition).Normalized;
 
-            //Gives the bullets a cooldown timer
-            _timer += deltaTime;
-
-            if (friendsDirectionX != 0 && _timer >= .5 || friendsDirectionZ != 0 && _timer >= .5)
-            {
-                Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, targetsDirectionX, targetsDirectionZ, 10, "Bullet");
-                bullet.SetScale(1, 1, 1);
-                currentScene.AddActor(bullet);
-
-                SphereCollider bulletCollider = new SphereCollider(1, bullet);
-                bullet.Collider = bulletCollider;
-
-
-                _timer = 0;
-            }
-
-            
-            Vector3 moveDirection = new Vector3(xDirection, 0, zDirection);
-
-            Velocity = moveDirection.Normalized * Speed * deltaTime;
-
-            if (Velocity.Magnitude > 0)
-                Forward = Velocity.Normalized;
+            Velocity = moveDirection * Speed * deltaTime;
 
             LocalPosition += Velocity;
+
+            if (GetTargetInSight())
+            {
+                //Gives the bullets a cooldown timer
+                _timer += deltaTime;
+
+                if (_target.WorldPosition.X != 0 && _timer >= .5 || _target.WorldPosition.Z != 0 && _timer >= .5)
+                {
+                    Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, _target.WorldPosition.X, _target.WorldPosition.Z, 10, "Bullet");
+                    bullet.SetScale(1, 1, 1);
+                    currentScene.AddActor(bullet);
+
+                    SphereCollider bulletCollider = new SphereCollider(1, bullet);
+                    bullet.Collider = bulletCollider;
+
+
+                    _timer = 0;
+                }
+
+                //Sets its forward to the targets position
+                LookAt(_target.WorldPosition);
+            }
 
             base.Update(deltaTime, currentScene);
 
         }
 
+        /// <summary>
+        /// Finds the target that is in its range
+        /// </summary>
+        /// <returns></returns>
         public bool GetTargetInSight()
         {
             Vector3 directionOfTarget = (_target.LocalPosition + LocalPosition).Normalized;
