@@ -12,13 +12,18 @@ namespace MathForGames
         /// </summary>
         private Actor[] _actors;
         private Actor[] _UIElements;
-        private int _enemyCount = 4;
+        private int _enemyCount = 1;
         private bool checkswin;
 
         public int EnemyCount
         {
             get { return _enemyCount; }
             set { _enemyCount = value; }
+        }
+
+        public Actor[] Actors
+        {
+            get { return _actors; }
         }
 
         public Scene()

@@ -32,15 +32,21 @@ namespace MathForGames
             Height = height;
             Font = Raylib.LoadFont("resources/fonts/alagard.png");
             FontSize = fontSize;
-            FontColor = color;
+            SetColor(color);
+        }
+
+        public override void Start()
+        {
+            base.Start();
         }
 
         public override void Draw()
         {
             //Create a new rectangel that will act as the borders of the text box
-            Rectangle textBox = new Rectangle(LocalPosition.X, LocalPosition.Y, Width, Height);
+            Rectangle rec = new Rectangle((int)WorldPosition.X, (int)WorldPosition.Y, Width, Height);
+            Raylib.DrawRectangleRec(rec, Color.BLACK);
             //Draw text box
-            Raylib.DrawTextRec(Font, Text, textBox, FontSize, 1, true, FontColor);
+            Raylib.DrawTextRec(Font, Text, rec, FontSize, 1, true, FontColor);
         }
     }
 }

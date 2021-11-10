@@ -43,7 +43,7 @@ namespace MathForGames
         {
             get
             {
-                return Owner.LocalPosition.X - Width / 2;
+                return Owner.WorldPosition.X - Width / 2;
             }
         }
 
@@ -54,7 +54,7 @@ namespace MathForGames
         {
             get
             {
-                return Owner.LocalPosition.X + Width / 2;
+                return Owner.WorldPosition.X + Width / 2;
             }
         }
 
@@ -65,7 +65,7 @@ namespace MathForGames
         {
             get
             {
-                return Owner.LocalPosition.Y - Height / 2;
+                return Owner.WorldPosition.Y - Height / 2;
             }
         }
 
@@ -76,7 +76,7 @@ namespace MathForGames
         {
             get
             {
-                return Owner.LocalPosition.Y + Height / 2;
+                return Owner.WorldPosition.Y + Height / 2;
             }
         }
 
@@ -84,7 +84,7 @@ namespace MathForGames
         {
             get
             {
-                return Owner.LocalPosition.Z - Length / 2;
+                return Owner.WorldPosition.Z - Length / 2;
             }
         }
 
@@ -92,7 +92,7 @@ namespace MathForGames
         {
             get
             {
-                return Owner.LocalPosition.Z + Length / 2;
+                return Owner.WorldPosition.Z + Length / 2;
             }
         }
 
@@ -124,6 +124,13 @@ namespace MathForGames
             return false;
         }
 
+        public override void Update()
+        {
+            _height = Owner.Size.X;
+            _width = Owner.Size.Y;
+            _length = Owner.Size.Z;
+        }
+
         public override bool CheckCollisionCircle(SphereCollider other)
         {
             return other.CheckCollisionAABB(this);
@@ -131,7 +138,7 @@ namespace MathForGames
 
         public override void Draw()
         {
-            Raylib.DrawCube(new System.Numerics.Vector3(Owner.WorldPosition.X, Owner.WorldPosition.Y, Owner.WorldPosition.Z), 1.5f, 1.5f, 1.5f, new Color(30, 200, 1, 100));           
+            Raylib.DrawCube(new System.Numerics.Vector3(Owner.WorldPosition.X, Owner.WorldPosition.Y, Owner.WorldPosition.Z), 1, 1, 1, new Color(30, 200, 1, 100));           
             //Raylib.DrawRectangleLines((int)Left, (int)Top, (int)Width, (int)Height, Color.BLACK);
         }
     }

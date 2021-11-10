@@ -27,7 +27,7 @@ namespace MathForGames
                 return false;
 
             //Find the distance between teh two actors
-            float distance = Vector3.Distance(other.Owner.LocalPosition, Owner.LocalPosition);
+            float distance = Vector3.Distance(other.Owner.WorldPosition, Owner.WorldPosition);
             //Find the length of the radii combined
             float combindRadii = other.CollisionRadius + CollisionRadius;
 

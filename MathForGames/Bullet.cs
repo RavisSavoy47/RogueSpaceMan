@@ -51,11 +51,11 @@ namespace MathForGames
 
             base.Update(deltaTime, currentScene);
 
+            _timer += deltaTime;
 
-            //The range of bullets
-            //if (Position.X - _bulletPosition.X > 150 || Position.Y - _bulletPosition.Y > 150 ||
-            //    Position.X - _bulletPosition.X < -150 || Position.Y - _bulletPosition.Y < -150)
-            //    currentScene.RemoveActor(this);
+            //Removes the bullet after a set time
+            if (_timer >= 3)
+                currentScene.RemoveActor(this);
         }
 
         public override void Draw()
@@ -68,7 +68,7 @@ namespace MathForGames
         {
             if (actor is Enemy)
             {
-                //currentScene.RemoveActor(actor);
+                currentScene.RemoveActor(this);
                 //currentScene.EnemyCount--;
             }
         }

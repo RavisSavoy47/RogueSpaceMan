@@ -94,7 +94,7 @@ namespace MathForGames
             scene.AddActor(enemy1);
             enemy1.SetColor(new Vector4(26, 78, 6, 255));
 
-            enemy1.Collider = new SphereCollider(1.5f, enemy1);
+            enemy1.Collider = new SphereCollider(1, enemy1);
 
 
             //Follows the player and shoot the enemy if the enemy is in sight
@@ -103,9 +103,10 @@ namespace MathForGames
             tinyMan.SetColor(new Vector4(200, 10, 25, 255));
             scene.AddActor(tinyMan);
 
-            tinyMan.Collider = new AABBCollider(1.5f, 1.5f, 1.5f, tinyMan);
+            tinyMan.Collider = new AABBCollider(1, 1, 1, tinyMan);
 
-
+            UIText text = new UIText(1, 1, 1, "TestTextBox", Color.BLACK, 70, 70, 15, "Health " + tinyMan.Health + " .");
+            scene.AddUIElement(text);
 
             _currentSceneIndex = AddScene(scene);
             _scenes[_currentSceneIndex].Start();
@@ -140,9 +141,9 @@ namespace MathForGames
             Raylib.ClearBackground(Color.RAYWHITE);
             //Adds all actors icons to buffer
             _scenes[_currentSceneIndex].Draw();
-            _scenes[_currentSceneIndex].DrawUI();
 
             Raylib.EndMode3D();
+            _scenes[_currentSceneIndex].DrawUI();
             Raylib.EndDrawing();
         }
 

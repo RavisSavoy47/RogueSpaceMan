@@ -27,6 +27,14 @@ namespace MathForGames
         private Actor _parent;
         private Shape _shape;
         private Color _color;
+        private float _health;
+
+
+        public float Health
+        {
+            get { return _health; }
+            set { _health = value; }
+        }
 
         public Color ShapeColor
         {
@@ -124,14 +132,15 @@ namespace MathForGames
             set { _collider = value; }
         }
 
-        public Actor(float x, float y, float z, string name = "Actor", Shape shape = Shape.CUBE) :
-         this(new Vector3 { X = x, Y = y, Z = z },name, shape ) {}       
+        public Actor(float x, float y, float z, string name = "Actor", Shape shape = Shape.CUBE, float health = 1) :
+         this(new Vector3 { X = x, Y = y, Z = z },name, shape, health ) {}       
 
-        public Actor(Vector3 position, string name = "Actor", Shape shape = Shape.CUBE)
+        public Actor(Vector3 position, string name = "Actor", Shape shape = Shape.CUBE, float health = 1)
         {
             LocalPosition = position;
             _name = name;
             _shape = shape;
+            _health = health;
         }
        
         public void UpdateTransforms()

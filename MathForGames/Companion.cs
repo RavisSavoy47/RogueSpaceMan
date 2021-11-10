@@ -15,7 +15,7 @@ namespace MathForGames
         public Actor _friend;
         private float _maxSightDistance;
         private float _maxViewAngle;
-        private float health = 5;
+        private static float _health = 0;
 
         public float Speed
         {
@@ -29,8 +29,9 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Companion(float x, float y, float z, float speed, float maxSightDistance, float maxViewAngle, Actor target, Actor friend, string name = "Companion", Shape shape = Shape.CUBE)
-            : base(x, y, z, name, shape)
+        public Companion(float x, float y, float z, float speed, float maxSightDistance, float maxViewAngle, 
+            Actor target, Actor friend, string name = "Companion", Shape shape = Shape.CUBE, float health = 5)
+            : base(x, y, z, name, shape, health)
         {
             _target = target;
             _friend = friend;
@@ -63,7 +64,7 @@ namespace MathForGames
 
                 LookAt(_target.WorldPosition);
 
-                if (_target.WorldPosition.X != 0 && _timer >= .5 || _target.WorldPosition.Z != 0 && _timer >= .5)
+                if (Forward.X != 0 && _timer >= .5 || Forward.Z != 0 && _timer >= .5)
                 {
 
                     Bullet bullet = new Bullet(WorldPosition.X, WorldPosition.Y, WorldPosition.Z, Forward.X, Forward.Z, 10, "Bullet", Shape.SPHERE);
@@ -78,6 +79,10 @@ namespace MathForGames
                     _timer = 0;
                 }
             }
+
+            if (_target.Health == 0)
+                GetNewTarget(currentScene);
+                
 
             base.Update(deltaTime, currentScene);
 
@@ -100,6 +105,16 @@ namespace MathForGames
 
         }
 
+
+        public void GetNewTarget(Scene currentScene)
+        {
+            for(int i = 0; i < currentScene.Actors.Length; i++)
+            {
+                if (currentScene.Actors[i] is Enemy)
+                    _target = currentScene.Actors[i];
+                return;
+            }
+        }
         /// <summary>
         /// Draws the collider draw
         /// </summary>
@@ -122,7 +137,13 @@ namespace MathForGames
             }
             else if (actor is Actor target)
             {
-                Velocity *= -1;   
+                Velocity *= -10;
+                LocalPosition += Velocity;
+                Health--;
+            }
+            if(Health <= 0)
+            {
+                currentScene.RemoveActor(this);
             }
         }
     }

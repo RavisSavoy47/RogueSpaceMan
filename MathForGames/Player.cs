@@ -11,6 +11,8 @@ namespace MathForGames
         private float _speed;
         private Vector3 _velocity;
         private float _timer = 0;
+        private float _health = 0;
+        private bool spawned;
 
         public float Speed
         {
@@ -24,8 +26,8 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Player(float x, float y, float z, float speed, string name = "Player", Shape shape = Shape.CUBE) 
-            : base(x, y, z, name, shape)
+        public Player(float x, float y, float z, float speed, string name = "Player", Shape shape = Shape.CUBE, float health = 5) 
+            : base(x, y, z, name, shape, health)
         {
             _speed = speed;
         }
@@ -62,9 +64,10 @@ namespace MathForGames
                 SphereCollider bulletCollider = new SphereCollider(.5f, bullet);
                 bullet.Collider = bulletCollider;
 
-
                 _timer = 0;
             }
+
+
 
             //PLayer movement
             Vector3 moveDirection = new Vector3(xDirection, 0, zDirection);
@@ -98,11 +101,17 @@ namespace MathForGames
         {
             if (actor is Enemy)
             {
-                Velocity *= -1;
+                Velocity *= -10;
+                LocalPosition += Velocity;
+                Health--;
 
                 //UIText DeathMessage = new UIText(500, 100, 1, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
                 //currentScene.AddUIElement(DeathMessage);
                 //currentScene.RemoveActor(this);
+            }
+            if (Health <= 0)
+            {
+                currentScene.RemoveActor(this);
             }
         }
     }

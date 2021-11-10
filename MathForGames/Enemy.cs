@@ -27,8 +27,8 @@ namespace MathForGames
         }
 
         public Enemy(float x, float y, float z, float speed, float maxSightDistance, float maxViewAngle, 
-            Actor target, string name = "Enemy", Shape shape = Shape.CUBE)
-            : base(x, y, z, name, shape)
+            Actor target, string name = "Enemy", Shape shape = Shape.CUBE, float health = 5)
+            : base(x, y, z, name, shape, health)
         {
             _target = target;
             _speed = speed;
@@ -94,12 +94,27 @@ namespace MathForGames
         {
             if(actor is Player)
             {
-                Velocity *= -1;
+                Velocity *= -50;
+                LocalPosition += Velocity;
+                Health--;
+
             }
 
-            if(actor is Companion)
+            else if(actor is Companion)
             {
-                Velocity *= -1;
+                Velocity *= -50;
+                LocalPosition += Velocity;
+                Health--;
+            }
+
+            else if(actor is Bullet)
+            {
+                Health--;
+            }
+
+            if (Health <= 0)
+            {
+                currentScene.RemoveActor(this);
             }
         }
     }
