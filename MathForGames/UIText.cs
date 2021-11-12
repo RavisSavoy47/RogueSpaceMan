@@ -44,7 +44,7 @@ namespace MathForGames
         {
             //Create a new rectangel that will act as the borders of the text box
             Rectangle rec = new Rectangle((int)WorldPosition.X, (int)WorldPosition.Y, Width, Height);
-            //Raylib.DrawRectangleRec(rec, Color.BLACK);
+            Raylib.DrawRectangleRec(rec, Color.GRAY);
             //Draw text box
             Raylib.DrawTextRec(Font, Text, rec, FontSize, 1, true, ShapeColor);
         }

@@ -27,7 +27,7 @@ namespace MathForGames
         }
 
         public Enemy(float x, float y, float z, float speed, float maxSightDistance, float maxViewAngle, 
-            Actor target, string name = "Enemy", Shape shape = Shape.CUBE, float health = 5)
+            Actor target, string name = "Enemy", Shape shape = Shape.CUBE, float health = 0)
             : base(x, y, z, name, shape, health)
         {
             _target = target;

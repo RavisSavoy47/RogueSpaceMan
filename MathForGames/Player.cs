@@ -26,7 +26,7 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Player(float x, float y, float z, float speed, string name = "Player", Shape shape = Shape.CUBE, float health = 5) 
+        public Player(float x, float y, float z, float speed, string name = "Player", Shape shape = Shape.CUBE, float health = 0) 
             : base(x, y, z, name, shape, health)
         {
             _speed = speed;

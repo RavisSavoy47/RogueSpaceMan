@@ -132,7 +132,7 @@ namespace MathForGames
             set { _collider = value; }
         }
 
-        public Actor(float x, float y, float z, string name = "Actor", Shape shape = Shape.CUBE, float health = 1) :
+        public Actor(float x, float y, float z, string name = "Actor", Shape shape = Shape.CUBE, float health = 0) :
          this(new Vector3 { X = x, Y = y, Z = z },name, shape, health ) {}       
 
         public Actor(Vector3 position, string name = "Actor", Shape shape = Shape.CUBE, float health = 1)

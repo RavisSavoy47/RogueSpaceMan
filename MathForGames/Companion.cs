@@ -30,7 +30,7 @@ namespace MathForGames
         }
 
         public Companion(float x, float y, float z, float speed, float maxSightDistance, float maxViewAngle, 
-            Actor target, Actor friend, string name = "Companion", Shape shape = Shape.CUBE, float health = 5)
+            Actor target, Actor friend, string name = "Companion", Shape shape = Shape.CUBE, float health = 0)
             : base(x, y, z, name, shape, health)
         {
             _target = target;
@@ -57,6 +57,7 @@ namespace MathForGames
             //Looks at the player
             LookAt(_friend.WorldPosition);
 
+            //Gets a new target after it's target is dead
             if (_target.Health == 0)
                 GetNewTarget(currentScene);
 
@@ -107,14 +108,14 @@ namespace MathForGames
 
         }
 
-
+        //Finds a new enemy after their target is killed
         public void GetNewTarget(Scene currentScene)
         {
             for(int i = 0; i < currentScene.Actors.Length; i++)
             {
                 if (currentScene.Actors[i] is Enemy)
                     _target = currentScene.Actors[i];
-                return;
+
             }
         }
         /// <summary>

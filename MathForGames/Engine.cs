@@ -15,6 +15,8 @@ namespace MathForGames
         private Scene[] _scenes = new Scene[0];
         private Stopwatch _stopwatch = new Stopwatch();
         private Camera3D _camera = new Camera3D();
+        private Player _camPlayer;
+        private Scene theScene;
         private Player _player;
         /// <summary>
         /// Called to begin the application
@@ -78,25 +80,31 @@ namespace MathForGames
             InitializeCamera();
 
             Scene scene = new Scene();
-            
-            Player player = new Player(1, 1, 1, 12, "player", Shape.CUBE);
+
+            theScene = scene;
+
+            Player player = new Player(1, 1, 1, 12, "player", Shape.CUBE, 10);
             player.SetScale(1, 1, 1);
             //max color value 255
             //last color slot is transprancy
             player.SetColor(new Vector4(86, 98, 3, 255));
             scene.AddActor(player);
+
+            //Lets the camera get the player
+            _camPlayer = player;
+            //Giving the ui text the player's health
             _player = player;
 
             player.Collider = new AABBCollider(2, 2, 2, player);
 
-            Enemy enemy1 = new Enemy(10, 1, 5, 5, 10, 100, player, "Enemy", Shape.SPHERE);
+            Enemy enemy1 = new Enemy(10, 1, 5, 5, 10, 100, player, "Enemy", Shape.SPHERE, 5);
             enemy1.SetScale(1, 1, 1);
             scene.AddActor(enemy1);
             enemy1.SetColor(new Vector4(26, 78, 6, 255));
 
             enemy1.Collider = new SphereCollider(1, enemy1);
 
-            Enemy enemy2 = new Enemy(20, 1, 5, 5, 10, 100, player, "Enemy", Shape.SPHERE);
+            Enemy enemy2 = new Enemy(20, 1, 5, 5, 10, 100, player, "Enemy", Shape.SPHERE, 5);
             enemy2.SetScale(1, 1, 1);
             scene.AddActor(enemy2);
             enemy2.SetColor(new Vector4(26, 78, 6, 255));
@@ -107,12 +115,11 @@ namespace MathForGames
             Companion tinyMan = new Companion(1, 1, 4, 10, 11, 400, enemy1, player, "planet", Shape.CUBE);
             tinyMan.SetScale(1, 1, 1);
             tinyMan.SetColor(new Vector4(200, 10, 25, 255));
-            scene.AddActor(tinyMan);
+            //scene.AddActor(tinyMan);
 
             tinyMan.Collider = new AABBCollider(1, 1, 1, tinyMan);
 
-            UIText text = new UIText(1, 1, 1, "TestTextBox", Color.BLACK, 500, 50, 15, "Player's Health " + player.Health + " .");
-            scene.AddUIElement(text);
+            
 
             _currentSceneIndex = AddScene(scene);
             _scenes[_currentSceneIndex].Start();
@@ -124,6 +131,9 @@ namespace MathForGames
         /// </summary>
         private void Update(float deltaTime)
         {
+            UIText text = new UIText(1, 1, 1, "TestTextBox", Color.BLACK, 500, 100, 35, "Player's Health " + _player.Health);
+            theScene.AddUIElement(text);
+
             // Camera position on the player position
             _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 15, _player.WorldPosition.Z + 15);
             // Point the camera is focused on the player position
