@@ -115,10 +115,10 @@ namespace MathForGames
             _enemy2 = enemy2;
 
             //Follows the player and shoot the enemy if the enemy is in sight
-            Companion tinyMan = new Companion(1, 1, 4, 10, 11, 400, enemy1, player, "planet", Shape.CUBE);
+            Companion tinyMan = new Companion(1, 1, 4, 10, 11, 400, enemy1, player, "planet", Shape.CUBE, 5);
             tinyMan.SetScale(1, 1, 1);
             tinyMan.SetColor(new Vector4(200, 10, 25, 255));
-            //scene.AddActor(tinyMan);
+            scene.AddActor(tinyMan);
 
             tinyMan.Collider = new AABBCollider(1, 1, 1, tinyMan);
 
@@ -134,10 +134,11 @@ namespace MathForGames
         /// </summary>
         private void Update(float deltaTime)
         {
-            UIText playerHP = new UIText(1, 1, 1, "TestTextBox", Color.BLACK, 150, 100, 15, "Player's Health " + _player.Health 
+            //Updates the player and enemies health and displays it
+            UIText actorsHP = new UIText(1, 1, 1, "TestTextBox", Color.BLACK, 150, 100, 15, "Player's Health " + _player.Health 
                 + "\nEnemy's Health " + _enemy1.Health + "\nEnemy2's Health " + _enemy2.Health);
 
-            theScene.AddUIElement(playerHP);
+            theScene.AddUIElement(actorsHP);
 
             // Camera position on the player position
             _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 15, _player.WorldPosition.Z + 15);

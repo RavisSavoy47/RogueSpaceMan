@@ -16,6 +16,7 @@ namespace MathForGames
         private float _maxSightDistance;
         private float _maxViewAngle;
         private static float _health = 0;
+        private int _enemyCount = 2;
 
         public float Speed
         {
@@ -57,9 +58,14 @@ namespace MathForGames
             //Looks at the player
             LookAt(_friend.WorldPosition);
 
+
             //Gets a new target after it's target is dead
-            if (_target.Health == 0)
+            if (_target.Health == 0 && _enemyCount != 0)
+            {
+                _enemyCount--;
                 GetNewTarget(currentScene);
+            }
+            
 
             if (GetTargetInSight())
             {
@@ -68,7 +74,7 @@ namespace MathForGames
 
                 LookAt(_target.WorldPosition);
 
-                if (Forward.X != 0 && _timer >= .5 || Forward.Z != 0 && _timer >= .5)
+                if ((Forward.X != 0 && _timer >= .5 || Forward.Z != 0 && _timer >= .5) && _enemyCount != 0)
                 {
 
                     Bullet bullet = new Bullet(WorldPosition.X, WorldPosition.Y, WorldPosition.Z, Forward.X, Forward.Z, 10, "Bullet", Shape.SPHERE);
