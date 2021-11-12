@@ -80,11 +80,19 @@ namespace MathForGames
 
             InitializeCamera();
 
+            InitializeActors();
+
+            _scenes[_currentSceneIndex].Start();
+            Console.CursorVisible = false;
+        }
+
+        public void InitializeActors()
+        {
             Scene scene = new Scene();
 
             theScene = scene;
 
-            Player player = new Player(1, 1, 1, 12, "player", Shape.CUBE, 7);
+            Player player = new Player(1, 3, 1, 12, "player", Shape.CUBE, 5);
             player.SetScale(1, 1, 1);
             //max color value 255
             //last color slot is transprancy
@@ -95,6 +103,18 @@ namespace MathForGames
             _player = player;
 
             player.Collider = new AABBCollider(2, 2, 2, player);
+
+            Actor actor1 = new Actor(0, 1, 0, "Gun", Shape.CUBE);
+            actor1.SetScale(.5f, .5f, .5f);
+            actor1.SetColor(new Vector4(86, 98, 3, 255));
+            scene.AddActor(actor1);
+            player.AddChild(actor1);
+
+            Actor actor2 = new Actor(0, -1, 0, "body", Shape.CUBE);
+            actor2.SetScale(2, 0, 1.5f);
+            actor2.SetColor(new Vector4(86, 98, 3, 255));
+            scene.AddActor(actor2);
+            player.AddChild(actor2);
 
             Enemy enemy1 = new Enemy(10, 1, 10, 5, 10, 100, player, "Enemy", Shape.SPHERE, 5);
             enemy1.SetScale(1, 1, 1);
@@ -109,24 +129,21 @@ namespace MathForGames
             enemy2.SetScale(1, 1, 1);
             scene.AddActor(enemy2);
             enemy2.SetColor(new Vector4(26, 78, 6, 255));
-            
+
             enemy2.Collider = new SphereCollider(1, enemy2);
 
             _enemy2 = enemy2;
 
             //Follows the player and shoot the enemy if the enemy is in sight
-            Companion tinyMan = new Companion(1, 1, 4, 10, 11, 400, enemy1, player, "planet", Shape.CUBE, 5);
+            Companion tinyMan = new Companion(1, 1, 4, 10, 11, 400, enemy1, player, "Companion", Shape.CUBE, 5);
             tinyMan.SetScale(1, 1, 1);
             tinyMan.SetColor(new Vector4(200, 10, 25, 255));
             scene.AddActor(tinyMan);
 
             tinyMan.Collider = new AABBCollider(1, 1, 1, tinyMan);
 
-            
 
             _currentSceneIndex = AddScene(scene);
-            _scenes[_currentSceneIndex].Start();
-            Console.CursorVisible = false;
         }
 
         /// <summary>
