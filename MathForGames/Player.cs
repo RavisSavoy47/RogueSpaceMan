@@ -11,7 +11,7 @@ namespace MathForGames
         private float _speed;
         private Vector3 _velocity;
         private float _timer = 0;
-        private float _health = 0;
+        private float _health;
         private bool spawned;
 
         public float Speed
@@ -39,6 +39,9 @@ namespace MathForGames
         /// <param name="currentScene">Gets the currentScene from Scene</param>
         public override void Update(float deltaTime, Scene currentScene)
         {
+            if (Health <= 0)
+                currentScene.RemoveActor(this);
+
             //The input for the player
             int xDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_A))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_D));
@@ -108,10 +111,6 @@ namespace MathForGames
                 //UIText DeathMessage = new UIText(500, 100, 1, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
                 //currentScene.AddUIElement(DeathMessage);
                 //currentScene.RemoveActor(this);
-            }
-            if (Health <= 0)
-            {
-                currentScene.RemoveActor(this);
             }
         }
     }

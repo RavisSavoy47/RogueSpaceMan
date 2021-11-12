@@ -43,6 +43,9 @@ namespace MathForGames
         /// <param name="currentScene"></param>
         public override void Update(float deltaTime, Scene currentScene)
         {
+            if(Health <= 0)
+                currentScene.RemoveActor(this);
+
             //Create a vector that stores the move input
             Vector3 moveDirection = (_target.LocalPosition - LocalPosition).Normalized;
 
@@ -100,22 +103,13 @@ namespace MathForGames
 
             }
 
-            else if(actor is Companion)
+            if(actor is Companion)
             {
                 Velocity *= -50;
                 LocalPosition += Velocity;
                 Health--;
             }
 
-            else if(actor is Bullet)
-            {
-                Health--;
-            }
-
-            if (Health <= 0)
-            {
-                currentScene.RemoveActor(this);
-            }
         }
     }
 }

@@ -15,9 +15,10 @@ namespace MathForGames
         private Scene[] _scenes = new Scene[0];
         private Stopwatch _stopwatch = new Stopwatch();
         private Camera3D _camera = new Camera3D();
-        private Player _camPlayer;
         private Scene theScene;
         private Player _player;
+        private Enemy _enemy1;
+        private Enemy _enemy2;
         /// <summary>
         /// Called to begin the application
         /// </summary>
@@ -83,26 +84,26 @@ namespace MathForGames
 
             theScene = scene;
 
-            Player player = new Player(1, 1, 1, 12, "player", Shape.CUBE, 10);
+            Player player = new Player(1, 1, 1, 12, "player", Shape.CUBE, 7);
             player.SetScale(1, 1, 1);
             //max color value 255
             //last color slot is transprancy
             player.SetColor(new Vector4(86, 98, 3, 255));
             scene.AddActor(player);
 
-            //Lets the camera get the player
-            _camPlayer = player;
-            //Giving the ui text the player's health
+            //Lets the camera and the ui text get information about the player
             _player = player;
 
             player.Collider = new AABBCollider(2, 2, 2, player);
 
-            Enemy enemy1 = new Enemy(10, 1, 5, 5, 10, 100, player, "Enemy", Shape.SPHERE, 5);
+            Enemy enemy1 = new Enemy(10, 1, 10, 5, 10, 100, player, "Enemy", Shape.SPHERE, 5);
             enemy1.SetScale(1, 1, 1);
             scene.AddActor(enemy1);
             enemy1.SetColor(new Vector4(26, 78, 6, 255));
 
             enemy1.Collider = new SphereCollider(1, enemy1);
+            //Giving the ui text the enemy's health
+            _enemy1 = enemy1;
 
             Enemy enemy2 = new Enemy(20, 1, 5, 5, 10, 100, player, "Enemy", Shape.SPHERE, 5);
             enemy2.SetScale(1, 1, 1);
@@ -110,6 +111,8 @@ namespace MathForGames
             enemy2.SetColor(new Vector4(26, 78, 6, 255));
             
             enemy2.Collider = new SphereCollider(1, enemy2);
+
+            _enemy2 = enemy2;
 
             //Follows the player and shoot the enemy if the enemy is in sight
             Companion tinyMan = new Companion(1, 1, 4, 10, 11, 400, enemy1, player, "planet", Shape.CUBE);
@@ -131,8 +134,10 @@ namespace MathForGames
         /// </summary>
         private void Update(float deltaTime)
         {
-            UIText text = new UIText(1, 1, 1, "TestTextBox", Color.BLACK, 500, 100, 35, "Player's Health " + _player.Health);
-            theScene.AddUIElement(text);
+            UIText playerHP = new UIText(1, 1, 1, "TestTextBox", Color.BLACK, 150, 100, 15, "Player's Health " + _player.Health 
+                + "\nEnemy's Health " + _enemy1.Health + "\nEnemy2's Health " + _enemy2.Health);
+
+            theScene.AddUIElement(playerHP);
 
             // Camera position on the player position
             _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 15, _player.WorldPosition.Z + 15);

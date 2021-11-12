@@ -68,9 +68,10 @@ namespace MathForGames
         {
             if (actor is Enemy)
             {
+                actor.Health--;
                 currentScene.RemoveActor(this);
-                currentScene.EnemyCount--;
             }
+
         }
     }
 }
