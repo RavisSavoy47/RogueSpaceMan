@@ -22,7 +22,7 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// Teh size of this collider pn the y axis
+        /// The size of this collider pn the y axis
         /// </summary>
         public float Height
         {
@@ -80,6 +80,9 @@ namespace MathForGames
             }
         }
 
+        /// <summary>
+        /// The farthest posituion forwards
+        /// </summary>
         public float Front
         {
             get
@@ -88,6 +91,9 @@ namespace MathForGames
             }
         }
 
+        /// <summary>
+        /// The farthest posituion backwards
+        /// </summary>
         public float Back
         {
             get
@@ -124,6 +130,7 @@ namespace MathForGames
             return false;
         }
 
+        //Sets the collider size to the actors size
         public override void Update()
         {
             _height = Owner.Size.X;
@@ -131,6 +138,7 @@ namespace MathForGames
             _length = Owner.Size.Z;
         }
 
+        //Checks if it collides with a sphere 
         public override bool CheckCollisionCircle(SphereCollider other)
         {
             return other.CheckCollisionAABB(this);

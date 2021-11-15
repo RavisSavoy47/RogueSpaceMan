@@ -111,6 +111,7 @@ namespace MathLibrary
                 );
         }
 
+        //Lets the matrix4 be added together by another matrix4
         public static Matrix4 operator +(Matrix4 lhs, Matrix4 rhs)
         {
             return new Matrix4
@@ -122,6 +123,7 @@ namespace MathLibrary
                 );
         }
 
+        //Lets the matrix4 be subtracted by another matrix4
         public static Matrix4 operator -(Matrix4 lhs, Matrix4 rhs)
         {
             return new Matrix4
@@ -133,6 +135,7 @@ namespace MathLibrary
                 );
         }
 
+        //Lets the matrix4 be multiplied by another matrix4
         public static Matrix4 operator *(Matrix4 lhs, Matrix4 rhs)
         {
             return new Matrix4
@@ -175,6 +178,7 @@ namespace MathLibrary
                 );
         }
 
+        //Lets a matrix4 be multiplied by a vector4
         public static Vector4 operator *(Matrix4 lhs, Vector4 rhs)
         {
             return new Vector4(lhs.M00 * rhs.X + lhs.M01 * rhs.Y + lhs.M02 * rhs.Z + lhs.M03 * rhs.W,

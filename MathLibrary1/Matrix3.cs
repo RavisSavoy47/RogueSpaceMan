@@ -57,6 +57,7 @@ namespace MathLibrary
                 );
         }
 
+        //Creates a new matrix that been translated by a vector 2 value
         public static Matrix3 CreateTranslation(Vector2 vector)
         {
             return new Matrix3
@@ -83,6 +84,7 @@ namespace MathLibrary
                 );
         }
 
+        //Lets 2 matrix3 add together
         public static Matrix3 operator +(Matrix3 lhs, Matrix3 rhs)
         {
             return new Matrix3
@@ -93,6 +95,7 @@ namespace MathLibrary
                 );
         }
 
+        //Lets 2 matrix3 subtract together
         public static Matrix3 operator -(Matrix3 lhs, Matrix3 rhs)
         {
             return new Matrix3
@@ -103,6 +106,7 @@ namespace MathLibrary
                 );
         }
 
+        //Lets 2 matrix3 multiply together
         public static Matrix3 operator *(Matrix3 lhs, Matrix3 rhs)
         {
             return new Matrix3
@@ -130,6 +134,7 @@ namespace MathLibrary
                 );
         }
 
+        //Lets a matrix3 be multiplied by a vector3
         public static Vector3 operator *(Matrix3 lhs, Vector3 rhs)
         {
             return new Vector3(lhs.M00 * rhs.X + lhs.M01 * rhs.Y + lhs.M02 * rhs.Z,

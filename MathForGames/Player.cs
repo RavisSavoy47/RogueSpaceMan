@@ -39,6 +39,7 @@ namespace MathForGames
         /// <param name="currentScene">Gets the currentScene from Scene</param>
         public override void Update(float deltaTime, Scene currentScene)
         {
+            //Checks if th eplayer is dead
             if (Health <= 0)
                 currentScene.RemoveActor(this);
 
@@ -47,6 +48,7 @@ namespace MathForGames
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_D));
             int zDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_W))
                 + Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_S));
+            int rotationbullets = Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_SPACE));
 
             //The input for bullet firing
             int bulletDirectionX = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
@@ -57,6 +59,7 @@ namespace MathForGames
                 //Gives the bullets a cooldown timer
                 _timer += deltaTime;
 
+            //Creates a bullet and it changes direction by the bullet direction's x and z
             if (bulletDirectionX != 0 && _timer >= .5 || bulletDirectionZ != 0 && _timer >= .5 )
             {
                 Bullet bullet = new Bullet(LocalPosition.X, LocalPosition.Y, LocalPosition.Z, bulletDirectionX, bulletDirectionZ, 10, "Bullet", Shape.SPHERE);
@@ -70,7 +73,23 @@ namespace MathForGames
                 _timer = 0;
             }
 
+            //Creates a bullet to rotate around the player
+            if (rotationbullets != 0 && _timer >= .5)
+            {
+                RotatingBullets rbullet = new RotatingBullets(1, 0, 1, 1, 1, 10, "Bullet", Shape.SPHERE);
+                rbullet.SetScale(.15f, .15f, .15f);
+                rbullet.SetColor(new Vector4(16, 23, 19, 255));
+                currentScene.AddActor(rbullet);
 
+                SphereCollider bulletCollider = new SphereCollider(.5f, rbullet);
+                rbullet.Collider = bulletCollider;
+                AddChild(rbullet);
+
+                Rotate(0, 10 * deltaTime, 0);
+
+
+                _timer = 0;
+            }
 
             //PLayer movement
             Vector3 moveDirection = new Vector3(xDirection, 0, zDirection);
@@ -102,6 +121,7 @@ namespace MathForGames
         /// <param name="currentScene"></param>
         public override void OnCollision(Actor actor, Scene currentScene)
         {
+            //If the player collides with an enemy
             if (actor is Enemy)
             {
                 Velocity *= -10;

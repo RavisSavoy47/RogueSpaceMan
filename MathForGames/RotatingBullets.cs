@@ -6,7 +6,7 @@ using Raylib_cs;
 
 namespace MathForGames
 {
-    class Bullet : Actor
+    class RotatingBullets : Actor
     {
         private float _speed;
         private Vector3 _velocity;
@@ -24,7 +24,7 @@ namespace MathForGames
             set { _velocity = value; }
         }
 
-        public Bullet(float x, float y, float z, float velocityX, float velocityZ, float speed, string name = "Bullet", Shape shape = Shape.CUBE)
+        public RotatingBullets(float x, float y, float z, float velocityX, float velocityZ, float speed, string name = "Bullet", Shape shape = Shape.CUBE)
             : base(x, y, z, name, shape)
         {
             _velocity.X = velocityX;
@@ -39,22 +39,25 @@ namespace MathForGames
         /// <param name="currentScene"></param>
         public override void Update(float deltaTime, Scene currentScene)
         {
-            //Moves by the velocity's x, y, z
-            Vector3 moveDirection = new Vector3 (_velocity.X, _velocity.Y, _velocity.Z);
+            Vector3 moveDirection = new Vector3(_velocity.X, 0, _velocity.Z);
 
             Velocity = moveDirection.Normalized * Speed * deltaTime;
 
             if (Velocity.Magnitude > 0)
                 Forward = Velocity.Normalized;
 
-            LocalPosition += Velocity;
+            LocalPosition += Velocity / 5;
+
+            //Rotate by 10 times deltatime
+            Rotate(10 * deltaTime, 0, 10 * deltaTime);
+            UpdateTransforms();
 
             base.Update(deltaTime, currentScene);
 
             _timer += deltaTime;
 
             //Removes the bullet after a set time
-            if (_timer >= 3)
+            if (_timer >= 2.5f)
                 currentScene.RemoveActor(this);
         }
 
@@ -66,7 +69,6 @@ namespace MathForGames
 
         public override void OnCollision(Actor actor, Scene currentScene)
         {
-            //if a bullet collides with an enemy
             if (actor is Enemy)
             {
                 actor.Health--;

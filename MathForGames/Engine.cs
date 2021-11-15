@@ -104,6 +104,7 @@ namespace MathForGames
 
             player.Collider = new AABBCollider(2, 2, 2, player);
 
+            //The body for the player
             Actor actor1 = new Actor(0, 1, 0, "Gun", Shape.CUBE);
             actor1.SetScale(.5f, .5f, .5f);
             actor1.SetColor(new Vector4(86, 98, 3, 255));
@@ -111,10 +112,11 @@ namespace MathForGames
             player.AddChild(actor1);
 
             Actor actor2 = new Actor(0, -1, 0, "body", Shape.CUBE);
-            actor2.SetScale(2, 0, 1.5f);
-            actor2.SetColor(new Vector4(86, 98, 3, 255));
+            actor2.SetScale(1.5f, 0, 1.5f);
+            actor2.SetColor(new Vector4(35, 98, 3, 255));
             scene.AddActor(actor2);
             player.AddChild(actor2);
+
 
             Enemy enemy1 = new Enemy(10, 1, 10, 5, 10, 100, player, "Enemy", Shape.SPHERE, 5);
             enemy1.SetScale(1, 1, 1);
@@ -134,6 +136,7 @@ namespace MathForGames
 
             _enemy2 = enemy2;
 
+
             //Follows the player and shoot the enemy if the enemy is in sight
             Companion tinyMan = new Companion(1, 1, 4, 10, 11, 400, enemy1, player, "Companion", Shape.CUBE, 5);
             tinyMan.SetScale(1, 1, 1);
@@ -141,6 +144,19 @@ namespace MathForGames
             scene.AddActor(tinyMan);
 
             tinyMan.Collider = new AABBCollider(1, 1, 1, tinyMan);
+
+            //The body for the companion
+            Actor actorC1 = new Actor(0, 1, 0, "Gun", Shape.CUBE);
+            actorC1.SetScale(.5f, .5f, .5f);
+            actorC1.SetColor(new Vector4(200, 120, 45, 255));
+            scene.AddActor(actorC1);
+            tinyMan.AddChild(actorC1);
+
+            Actor actorC2 = new Actor(0, -1, 0, "body", Shape.CUBE);
+            actorC2.SetScale(1.5f, 0, 1.5f);
+            actorC2.SetColor(new Vector4(200, 130, 25, 255));
+            scene.AddActor(actorC2);
+            tinyMan.AddChild(actorC2);
 
 
             _currentSceneIndex = AddScene(scene);

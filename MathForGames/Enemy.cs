@@ -95,6 +95,7 @@ namespace MathForGames
 
         public override void OnCollision(Actor actor, Scene currentScene)
         {
+            //If the enemy collides with the a player
             if(actor is Player)
             {
                 Velocity *= -50;
@@ -103,7 +104,8 @@ namespace MathForGames
 
             }
 
-            if(actor is Companion)
+            //If the enemy collides with the a companion
+            if (actor is Companion)
             {
                 Velocity *= -50;
                 LocalPosition += Velocity;
