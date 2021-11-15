@@ -255,7 +255,7 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// Ends teh application
+        /// Ends the application
         /// </summary>
         public static void CloseApplication()
         {
