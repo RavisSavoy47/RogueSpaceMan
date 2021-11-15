@@ -15,17 +15,26 @@ namespace MathForGames
         private int _enemyCount = 2;
         private bool checkswin;
 
+        /// <summary>
+        /// checks the count of enemies
+        /// </summary>
         public int EnemyCount
         {
             get { return _enemyCount; }
             set { _enemyCount = value; }
         }
 
+        /// <summary>
+        /// The array of actors
+        /// </summary>
         public Actor[] Actors
         {
             get { return _actors; }
         }
 
+        /// <summary>
+        /// Creates an instance of a actors array and a ui elements array
+        /// </summary>
         public Scene()
         {
             _actors = new Actor[0];

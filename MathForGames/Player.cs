@@ -14,12 +14,18 @@ namespace MathForGames
         private float _health;
         private bool spawned;
 
+        /// <summary>
+        /// gets the speed
+        /// </summary>
         public float Speed
         {
             get { return _speed; }
             set { _speed = value; }
         }
 
+        /// <summary>
+        /// gets the velocity
+        /// </summary>
         public Vector3 Velocity
         {
             get { return _velocity; }

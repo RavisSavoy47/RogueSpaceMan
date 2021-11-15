@@ -14,12 +14,18 @@ namespace MathForGames
         private float _maxSightDistance;
         private float _maxViewAngle;
 
+        /// <summary>
+        /// Gets and sets the velocity
+        /// </summary>
         public float Speed
         {
             get { return _speed; }
             set { _speed = value; }
         }
 
+        /// <summary>
+        /// Gets and sets the speed
+        /// </summary>
         public Vector3 Velocity
         {
             get { return _velocity; }
