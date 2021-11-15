@@ -46,6 +46,8 @@ namespace MathForGames
             if(Health <= 0)
                 currentScene.RemoveActor(this);
 
+            float distance = Vector3.Distance(_target.LocalPosition, LocalPosition);
+
             //Create a vector that stores the move input
             Vector3 moveDirection = (_target.LocalPosition - LocalPosition).Normalized;
 
@@ -63,6 +65,26 @@ namespace MathForGames
             }
 
 
+            //Changes the enemy scale based on the distance from the player
+            if (distance < 10)
+            {
+                SetScale(1, 1, 1);
+            }
+
+            if (distance < 12)
+            {
+                SetScale(1.5f, 1.5f, 1.5f);
+            }
+
+            if (distance > 15)
+            {
+                SetScale(2.5f, 2.5f, 2.5f);
+            }
+
+            if (distance > 20)
+            {
+                SetScale(3, 3, 3);
+            }
 
             base.Update(deltaTime, currentScene);
         }

@@ -73,6 +73,10 @@ namespace MathForGames
                 _timer = 0;
             }
 
+
+            //Rotates the player 
+            Rotate(0, 5 * deltaTime, 0);
+
             //Creates a bullet to rotate around the player
             if (rotationbullets != 0 && _timer >= .5)
             {
@@ -81,12 +85,9 @@ namespace MathForGames
                 rbullet.SetColor(new Vector4(16, 23, 19, 255));
                 currentScene.AddActor(rbullet);
 
-                SphereCollider bulletCollider = new SphereCollider(.5f, rbullet);
-                rbullet.Collider = bulletCollider;
+                SphereCollider rbulletCollider = new SphereCollider(.5f, rbullet);
+                rbullet.Collider = rbulletCollider;
                 AddChild(rbullet);
-
-                Rotate(0, 10 * deltaTime, 0);
-
 
                 _timer = 0;
             }
