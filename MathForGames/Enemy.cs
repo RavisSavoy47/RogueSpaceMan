@@ -43,8 +43,14 @@ namespace MathForGames
         /// <param name="currentScene"></param>
         public override void Update(float deltaTime, Scene currentScene)
         {
+            //checks if the enemy is dead
             if(Health <= 0)
+            {
+                //subtracts the enemy count by one and removes the dead enemy
+                currentScene.EnemyCount--;
                 currentScene.RemoveActor(this);
+            }
+
 
             float distance = Vector3.Distance(_target.LocalPosition, LocalPosition);
 
@@ -120,6 +126,7 @@ namespace MathForGames
             //If the enemy collides with the a player
             if(actor is Player)
             {
+                //pushes the enemy back and subtracts health
                 Velocity *= -50;
                 LocalPosition += Velocity;
                 Health--;
@@ -129,6 +136,7 @@ namespace MathForGames
             //If the enemy collides with the a companion
             if (actor is Companion)
             {
+                //pushes the enemy back and subtracts health
                 Velocity *= -50;
                 LocalPosition += Velocity;
                 Health--;

@@ -72,8 +72,10 @@ namespace MathForGames
                 //Gives the bullets a cooldown timer
                 _timer += deltaTime;
 
+                //Looks at its targets position
                 LookAt(_target.WorldPosition);
 
+                //Shoots bullets from its forward
                 if ((Forward.X != 0 && _timer >= .5 || Forward.Z != 0 && _timer >= .5) && _enemyCount != 0)
                 {
 
@@ -89,10 +91,6 @@ namespace MathForGames
                     _timer = 0;
                 }
             }
-
-            
-                
-
             base.Update(deltaTime, currentScene);
 
         }
@@ -140,18 +138,25 @@ namespace MathForGames
         /// <param name="currentScene"></param>
         public override void OnCollision(Actor actor, Scene currentScene)
         {
-            if (actor is Actor friend)
+            //If the companion collides with a player
+            if (actor is Player)
             {
+                //Reverse his velocity
                 LocalPosition -= Velocity;
             }
-            else if (actor is Actor target)
+            
+            //If the companion collides with a enemy
+            if (actor is Enemy)
             {
+                //Push the companion back and they lose health
                 Velocity *= -10;
                 LocalPosition += Velocity;
                 Health--;
             }
+            //Checks if th ecompanion is dead
             if(Health <= 0)
             {
+                //..Removes if health is 0
                 currentScene.RemoveActor(this);
             }
         }

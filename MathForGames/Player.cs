@@ -41,7 +41,10 @@ namespace MathForGames
         {
             //Checks if th eplayer is dead
             if (Health <= 0)
+            {
                 currentScene.RemoveActor(this);
+                Engine.CloseApplication();
+            }
 
             //The input for the player
             int xDirection = -Convert.ToInt32(Raylib.IsKeyDown(KeyboardKey.KEY_A))
@@ -74,7 +77,7 @@ namespace MathForGames
             }
 
 
-            //Rotates the player 
+            //Rotates the player so the rotating bullet rotates 
             Rotate(0, 5 * deltaTime, 0);
 
             //Creates a bullet to rotate around the player
@@ -87,6 +90,7 @@ namespace MathForGames
 
                 SphereCollider rbulletCollider = new SphereCollider(.5f, rbullet);
                 rbullet.Collider = rbulletCollider;
+
                 AddChild(rbullet);
 
                 _timer = 0;
@@ -125,15 +129,13 @@ namespace MathForGames
             //If the player collides with an enemy
             if (actor is Enemy)
             {
+                //pushes the player back and subtracts health
                 Velocity *= -10;
                 LocalPosition += Velocity;
                 Health--;
 
+                //Checks if their is a collision
                 Console.WriteLine(actor + "Collision!");
-
-                //UIText DeathMessage = new UIText(500, 100, 1, "DeathMessage", Color.BLACK, 70, 70, 15, "You Died!!!");
-                //currentScene.AddUIElement(DeathMessage);
-                //currentScene.RemoveActor(this);
             }
         }
     }

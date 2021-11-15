@@ -59,6 +59,7 @@ namespace MathForGames
             return distanceFromClosestPoint <= CollisionRadius;
         }
         
+        //Draws the sphere based on the owner's world position x, y, and z;
         public override void Draw()
         {
             Raylib.DrawSphere(new System.Numerics.Vector3(Owner.WorldPosition.X, Owner.WorldPosition.Y, Owner.WorldPosition.Z), CollisionRadius, new Color(200, 130, 20, 100));

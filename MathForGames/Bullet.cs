@@ -58,6 +58,7 @@ namespace MathForGames
                 currentScene.RemoveActor(this);
         }
 
+        //Calls the base draw and the collider draw
         public override void Draw()
         {
             base.Draw();

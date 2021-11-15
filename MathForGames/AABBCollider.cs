@@ -144,6 +144,7 @@ namespace MathForGames
             return other.CheckCollisionAABB(this);
         }
 
+        //Draws a cube for its collider 
         public override void Draw()
         {
             Raylib.DrawCube(new System.Numerics.Vector3(Owner.WorldPosition.X, Owner.WorldPosition.Y, Owner.WorldPosition.Z), 1, 1, 1, new Color(30, 200, 1, 100));           

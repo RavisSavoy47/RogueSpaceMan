@@ -221,12 +221,20 @@ namespace MathForGames
             _started = true;
         }
 
+        /// <summary>
+        /// Checks the local position of the actors in the scene and updates the transforms
+        /// </summary>
+        /// <param name="deltaTime"></param>
+        /// <param name="currentScene"></param>
         public virtual void Update(float deltaTime, Scene currentScene)
         {  
             Console.WriteLine(_name + ": " + LocalPosition.X + ", " + LocalPosition.Y);
             UpdateTransforms();
         }
 
+        /// <summary>
+        /// Draws the shapes of based on positions
+        /// </summary>
         public virtual void Draw()
         {
             System.Numerics.Vector3 startPos = new System.Numerics.Vector3(WorldPosition.X, WorldPosition.Y, WorldPosition.Z);
@@ -242,7 +250,7 @@ namespace MathForGames
                     break;
             }
                 //Draw a line to represent the actors forward vector
-                Raylib.DrawLine3D(startPos, endPos, Color.RED);
+                //Raylib.DrawLine3D(startPos, endPos, Color.RED);
         }
 
         public virtual void End()

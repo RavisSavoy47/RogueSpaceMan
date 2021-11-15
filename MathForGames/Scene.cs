@@ -65,14 +65,16 @@ namespace MathForGames
                 }
             }
 
-            if (EnemyCount == 0 && !checkswin)
+            //Checks if their are no more enemies
+            if (EnemyCount == 0)
             {
-                //UIText win = new UIText(200, 100, 1, "WinBox", Color.BLACK, 70, 70, 15, "You Have Won!!!");
-                //currentScene.AddUIElement(win);
-                checkswin = true;
+                //Display the win screen
+                UIText win = new UIText(400, 10, 50, "WinBox", Color.YELLOW, 250, 150, 50, "You Won!!!");
+                currentScene.AddUIElement(win);
             }
         }
 
+        //Updates the Ui in all scenes
         public virtual void UpdateUI(float deltatTime, Scene currentScene)
         {
             for (int i = 0; i < _UIElements.Length; i++)
@@ -84,27 +86,35 @@ namespace MathForGames
             }
         }
 
+        //Draws the ui
         public virtual void DrawUI()
         {
+            //gets the length of the ui elements
             for (int i = 0; i < _UIElements.Length; i++)
             {
+                //calls the actor's draw
                 _UIElements[i].Draw();
             }
         }
 
+        //Draws the actors
         public virtual void Draw()
         {
+            //gets the actors length
             for (int i = 0; i < _actors.Length; i++)
             {
-
+                //calls the actor's draw
                 _actors[i].Draw();
             }
         }
 
+        //Gets the end
         public virtual void End()
         {
+            //gets the actors length
             for (int i = 0; i < _actors.Length; i++)
             {
+                //calls the end function
                 _actors[i].End();
             }
         }

@@ -69,9 +69,12 @@ namespace MathForGames
 
         public override void OnCollision(Actor actor, Scene currentScene)
         {
+            //If the rotating bullet collides with a enemy
             if (actor is Enemy)
             {
+                //subtract health from the enemy
                 actor.Health--;
+                //remove the bullet after the collision
                 currentScene.RemoveActor(this);
             }
 

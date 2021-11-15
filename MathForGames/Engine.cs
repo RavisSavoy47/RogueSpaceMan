@@ -19,6 +19,7 @@ namespace MathForGames
         private Player _player;
         private Enemy _enemy1;
         private Enemy _enemy2;
+        private Companion _compan;
         /// <summary>
         /// Called to begin the application
         /// </summary>
@@ -133,7 +134,7 @@ namespace MathForGames
             enemy2.SetColor(new Vector4(26, 78, 6, 255));
 
             enemy2.Collider = new SphereCollider(1, enemy2);
-
+            //Giving the ui text the enemy's health
             _enemy2 = enemy2;
 
 
@@ -157,7 +158,8 @@ namespace MathForGames
             actorC2.SetColor(new Vector4(200, 130, 25, 255));
             scene.AddActor(actorC2);
             tinyMan.AddChild(actorC2);
-
+            //Giving the ui text the companion's health
+            _compan = tinyMan;
 
             _currentSceneIndex = AddScene(scene);
         }
@@ -168,7 +170,7 @@ namespace MathForGames
         private void Update(float deltaTime)
         {
             //Updates the player and enemies health and displays it
-            UIText actorsHP = new UIText(1, 1, 1, "TestTextBox", Color.BLACK, 150, 100, 15, "Player's Health " + _player.Health 
+            UIText actorsHP = new UIText(1, 1, 1, "TestTextBox", Color.BLACK, 150, 100, 15, "Player's Health " + _player.Health + "\nCompanion's Health " + _compan.Health
                 + "\nEnemy's Health " + _enemy1.Health + "\nEnemy2's Health " + _enemy2.Health);
 
             theScene.AddUIElement(actorsHP);
