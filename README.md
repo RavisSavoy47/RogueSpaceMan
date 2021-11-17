@@ -1,5 +1,9 @@
 # RogueSpaceMan
 
+## Description
+Its a 3D shooter and you have a companion that follows the player around helping the player. 
+You shoot the enemies and kill all them to win.
+
 ## How to play
 - Use WASD to move your player
 - Use the arrows to shoot bullets int any direction
