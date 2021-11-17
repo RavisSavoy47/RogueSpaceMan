@@ -42,7 +42,7 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// Lets the player move and shoot bullets 
+        /// Lets the companion move and shoot bullets 
         /// </summary>
         /// <param name="deltaTime">The timer</param>
         /// <param name="currentScene">Gets the currentScene from Scene</param>

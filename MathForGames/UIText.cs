@@ -35,11 +35,17 @@ namespace MathForGames
             SetColor(color);
         }
 
+        /// <summary>
+        /// Calls the base draw
+        /// </summary>
         public override void Start()
         {
             base.Start();
         }
 
+        /// <summary>
+        /// Draws the text box
+        /// </summary>
         public override void Draw()
         {
             //Create a new rectangel that will act as the borders of the text box

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Raylib_cs;
-
-namespace MathForGames
+﻿namespace MathForGames
 {
     enum ColliderType
     {
-        CIRCLE,
+        Sphere,
         AABB
     }
 
@@ -34,31 +29,35 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// Checks if their is a collision of type Collider Type circle or AABB
+        /// Checks if their is a collision of type Collider Type sphere or AABB
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
         public bool CheckCollision(Actor other)
         {
-            if (other.Collider.ColliderType == ColliderType.CIRCLE)
-                return CheckCollisionCircle((SphereCollider)other.Collider);
+            if (other.Collider.ColliderType == ColliderType.Sphere)
+                return CheckCollisionSphere((SphereCollider)other.Collider);
             else if (other.Collider.ColliderType == ColliderType.AABB)
                 return CheckCollisionAABB((AABBCollider)other.Collider);
             return false;
         }
 
-        public virtual bool CheckCollisionCircle(SphereCollider other) { return false; }
+        //Chceks if the collider collides with a sphere collider
+        public virtual bool CheckCollisionSphere(SphereCollider other) { return false; }
 
+        //Chceks if the collider collides with a AABB collider
         public virtual bool CheckCollisionAABB(AABBCollider other) { return false; }
 
+        //Gives the colliders a draw
         public virtual void Draw()
         {
-
         }
 
+        /// <summary>
+        /// Gives the collidera draw
+        /// </summary>
         public virtual void Update()
         {
-
         }
     }
 }

@@ -12,7 +12,6 @@ namespace MathForGames
         private Vector3 _velocity;
         private float _timer = 0;
         private float _health;
-        private bool spawned;
 
         /// <summary>
         /// gets the speed
@@ -39,7 +38,7 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// Lets the player move and shoot bullets 
+        /// Gives the player the abillity to move and shoot  different types of bullets.
         /// </summary>
         /// <param name="deltaTime">The timer</param>
         /// <param name="currentScene">Gets the currentScene from Scene</param>

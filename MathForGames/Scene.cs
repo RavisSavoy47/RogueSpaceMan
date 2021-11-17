@@ -129,7 +129,7 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// Adds an actor the scenes list of ui elements.
+        /// Adds an UI to the scenes list of ui elements.
         /// </summary>
         /// <param name="UI">The actor to add to the scene</param>
         public virtual void AddUIElement(Actor UI)
@@ -151,10 +151,10 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// Removes the actor from the scene
+        /// Removes the UI from the scene
         /// </summary>
-        /// <param name="UI">The actor to remove</param>
-        /// <returns>False if the actor was not in the scene array</returns>
+        /// <param name="UI">The aUI to remove</param>
+        /// <returns>False if the UI was not in the scene array</returns>
         public virtual bool RemoveUIElement(Actor UI)
         {
             //Create a variable to store if the removal was successful

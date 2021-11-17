@@ -144,7 +144,7 @@ namespace MathForGames
         }
        
         /// <summary>
-        /// Updates the transform of the actor nad checks if it has a parent or not
+        /// Updates the transform of the actor and checks if it has a parent or not
         /// </summary>
         public void UpdateTransforms()
         {
@@ -159,7 +159,7 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// Adds a child to the scene array
+        /// Adds a child to the new array
         /// </summary>
         /// <param name="child"></param>
         public void AddChild(Actor child)
@@ -184,7 +184,7 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// Removes a child from the scenes array
+        /// Removes a child from the new array
         /// </summary>
         /// <param name="child">A child of a parent</param>
         /// <returns>A child that doesn't have a parent</returns>
@@ -274,7 +274,7 @@ namespace MathForGames
         /// <summary>
         /// Checks if this actor collided with another actor
         /// </summary>
-        /// <param name="other">Teh actor to check for a collision against</param>
+        /// <param name="other">The actor to check for a collision against</param>
         /// <returns>True if the distance between the actors is less than the radii of the two combined</returns>
         public virtual bool CheckForCollision(Actor other)
         {
@@ -290,6 +290,7 @@ namespace MathForGames
         /// </summary>
         /// <param name="translationX">The new x position</param>
         /// <param name="translationY">The new y position</param>
+        /// <param name="translationZ">The new z position</param>
         public void SetTranslation(float translationX, float translationY, float translationZ)
         {
             _translation = Matrix4.CreateTranslation(translationX, translationY, translationZ);
@@ -299,7 +300,8 @@ namespace MathForGames
         /// Applies the given values to the current translation
         /// </summary>
         /// <param name="translationX">The amount to move on the x</param>
-        /// <param name="translationY">The amount to move on the yparam>
+        /// <param name="translationY">The amount to move on the y<param>
+        /// <param name="translationZ">The amount to move on the z</param>
         public void Translate(float translationX, float translationY, float translationZ)
         {
             _translation *= Matrix4.CreateTranslation(translationX, translationY, translationZ);
@@ -318,7 +320,7 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// Adds a roation to the current transform's rotation.
+        /// Applies the roation to the current transform's rotation.
         /// </summary>
         /// <param name="radians">The angle in radians to turn.</param>
         public void Rotate(float radiansX, float radiansY, float radiansZ)
@@ -352,9 +354,9 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// Rotates the actot to face the given position 
+        /// Rotates the actor to face the given position 
         /// </summary>
-        /// <param name="position">Th eposition the actor should be looking</param>
+        /// <param name="position">The position the actor should be looking</param>
         public void LookAt(Vector3 position)
         {
             //Get the direction for the actor to look in
@@ -408,16 +410,26 @@ namespace MathForGames
                                     newXAxis.Z, newYAxis.Z, direction.Z, 0,
                                     0, 0, 0, 1);
         }
+        /// <summary>
+        /// Gives an actor a oncollision
+        /// </summary>
+        /// <param name="actor"></param>
+        /// <param name="currentScene"></param>
         public virtual void OnCollision(Actor actor, Scene currentScene)
         {
 
         }
 
+        //Sets the actors to have color
         public void SetColor(Color color)
         {
             _color = color;
         }
 
+        /// <summary>
+        /// Gives the actor a color based on their color values
+        /// </summary>
+        /// <param name="colorValue"></param>
         public void SetColor(Vector4 colorValue)
         {
             _color = new Color((int)colorValue.X, (int)colorValue.Y, (int)colorValue.Z, (int)colorValue.W);

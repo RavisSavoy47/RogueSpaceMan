@@ -61,12 +61,14 @@ namespace MathForGames
                 currentScene.RemoveActor(this);
         }
 
+        //Draws their collider
         public override void Draw()
         {
             base.Draw();
             Collider.Draw();
         }
 
+        //Checks if they have coillided woth another actor
         public override void OnCollision(Actor actor, Scene currentScene)
         {
             //If the rotating bullet collides with a enemy

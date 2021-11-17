@@ -13,7 +13,7 @@ namespace MathForGames
         private float _length;
 
         /// <summary>
-        /// The size of thsi collider on the x axis
+        /// The size of this collider on the x axis
         /// </summary>
         public float Width
         {
@@ -22,7 +22,7 @@ namespace MathForGames
         }
 
         /// <summary>
-        /// The size of this collider pn the y axis
+        /// The size of this collider on the y axis
         /// </summary>
         public float Height
         {
@@ -30,6 +30,9 @@ namespace MathForGames
             set { _height = value; }
         }
 
+        /// <summary>
+        /// The size of this collider on the z axis
+        /// </summary>
         public float Length
         {
             get { return _length; }
@@ -109,6 +112,11 @@ namespace MathForGames
             _length = length;
         }
 
+        /// <summary>
+        /// Checks if an AABB collider has collideed with an AABB collider
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public override bool CheckCollisionAABB(AABBCollider other)
         {
             //Return false if this owner is checking for a collision against itself
@@ -139,7 +147,7 @@ namespace MathForGames
         }
 
         //Checks if it collides with a sphere 
-        public override bool CheckCollisionCircle(SphereCollider other)
+        public override bool CheckCollisionSphere(SphereCollider other)
         {
             return other.CheckCollisionAABB(this);
         }

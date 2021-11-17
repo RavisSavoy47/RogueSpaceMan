@@ -16,12 +16,17 @@ namespace MathForGames
             set { _collisionRadius = value; }
         }
 
-        public SphereCollider(float collisionRadius, Actor owner) : base(owner, ColliderType.CIRCLE)
+        public SphereCollider(float collisionRadius, Actor owner) : base(owner, ColliderType.Sphere)
         {
             _collisionRadius = collisionRadius;
         }
 
-        public override bool CheckCollisionCircle(SphereCollider other)
+        /// <summary>
+        /// Checks if it has collided with a sphere collider
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public override bool CheckCollisionSphere(SphereCollider other)
         {
             if (other.Owner == Owner)
                 return false;
@@ -35,6 +40,11 @@ namespace MathForGames
 
         }
 
+        /// <summary>
+        /// Checks if it has collided with a AABB collider
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public override bool CheckCollisionAABB(AABBCollider other)
         {
             //return false if this collider is checking collision against itself
