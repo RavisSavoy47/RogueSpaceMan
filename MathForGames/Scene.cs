@@ -78,7 +78,7 @@ namespace MathForGames
             if (EnemyCount == 0)
             {
                 //Display the win screen
-                UIText win = new UIText(400, 10, 50, "WinBox", Color.YELLOW, 250, 150, 50, "You Won!!!");
+                UIText win = new UIText(230, 100, 50, "WinBox", Color.DARKPURPLE, 250, 100, 50, "You Won!!!");
                 currentScene.AddUIElement(win);
             }
         }

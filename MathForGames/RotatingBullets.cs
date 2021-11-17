@@ -46,7 +46,7 @@ namespace MathForGames
             if (Velocity.Magnitude > 0)
                 Forward = Velocity.Normalized;
 
-            LocalPosition += Velocity / 5;
+            LocalPosition += Velocity;
 
             //Rotate by 10 times deltatime
             Rotate(10 * deltaTime, 0, 10 * deltaTime);

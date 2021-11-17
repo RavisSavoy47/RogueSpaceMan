@@ -241,7 +241,7 @@ namespace MathForGames
         /// <param name="currentScene"></param>
         public virtual void Update(float deltaTime, Scene currentScene)
         {  
-            Console.WriteLine(_name + ": " + LocalPosition.X + ", " + LocalPosition.Y);
+            //Console.WriteLine(_name + ": " + LocalPosition.X + ", " + LocalPosition.Y);
             UpdateTransforms();
         }
 

@@ -128,7 +128,7 @@ namespace MathForGames
             //Giving the ui text the enemy's health
             _enemy1 = enemy1;
 
-            Enemy enemy2 = new Enemy(20, 1, 5, 5, 10, 100, player, "Enemy", Shape.SPHERE, 5);
+            Enemy enemy2 = new Enemy(20, 1, 5, 10, 10, 100, player, "Enemy", Shape.SPHERE, 5);
             enemy2.SetScale(1, 1, 1);
             scene.AddActor(enemy2);
             enemy2.SetColor(new Vector4(26, 78, 6, 255));
@@ -170,10 +170,16 @@ namespace MathForGames
         private void Update(float deltaTime)
         {
             //Updates the player and enemies health and displays it
-            UIText actorsHP = new UIText(1, 1, 1, "TestTextBox", Color.BLACK, 150, 100, 15, "Player's Health " + _player.Health + "\nCompanion's Health " + _compan.Health
+            UIText actorsHP = new UIText(1, 1, 1, "ActorHPBox", Color.BLACK, 150, 100, 15, "Player's Health " + _player.Health + "\nCompanion's Health " + _compan.Health
                 + "\nEnemy's Health " + _enemy1.Health + "\nEnemy2's Health " + _enemy2.Health);
 
             theScene.AddUIElement(actorsHP);
+
+            //Displays The Controls
+            UIText controls = new UIText(550, 1, 1, "ControlBox", Color.BLACK, 250, 100, 15, "Use WASD to Move the player." + "\nPress the arrow keys to shoot bullets. " 
+                + "\nPress Space to shoot rotating Bullets ");
+
+            theScene.AddUIElement(controls);
 
             // Camera position on the player position
             _camera.position = new System.Numerics.Vector3(_player.WorldPosition.X, _player.WorldPosition.Y + 15, _player.WorldPosition.Z + 15);
