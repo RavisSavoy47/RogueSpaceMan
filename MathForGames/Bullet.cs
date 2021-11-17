@@ -65,6 +65,7 @@ namespace MathForGames
             Collider.Draw();
         }
 
+        //Checks if they have coillided woth another actor
         public override void OnCollision(Actor actor, Scene currentScene)
         {
             //if a bullet collides with an enemy

@@ -8,20 +8,7 @@
   <ItemGroup>
     <None Remove="bullet.png" />
     <None Remove="enemy.png" />
-    <None Remove="Images\sun.png" />
     <None Remove="player.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Images\bullet.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\enemy.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Images\player.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
