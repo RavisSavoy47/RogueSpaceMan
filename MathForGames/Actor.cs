@@ -143,6 +143,9 @@ namespace MathForGames
             _health = health;
         }
        
+        /// <summary>
+        /// Updates the transform of the actor nad checks if it has a parent or not
+        /// </summary>
         public void UpdateTransforms()
         {
             _localTransform = _translation * _rotation * _scale;
@@ -155,6 +158,10 @@ namespace MathForGames
                 GlobalTransform = LocalTransform;
         }
 
+        /// <summary>
+        /// Adds a child to the scene array
+        /// </summary>
+        /// <param name="child"></param>
         public void AddChild(Actor child)
         {
             //Create a new temp arary larger than the current one
@@ -176,6 +183,11 @@ namespace MathForGames
             child.Parent = this;
         }
 
+        /// <summary>
+        /// Removes a child from the scenes array
+        /// </summary>
+        /// <param name="child">A child of a parent</param>
+        /// <returns>A child that doesn't have a parent</returns>
         public bool RemoveChild(Actor child)
         {
             //Create a variable to store if the removal was successful
@@ -216,6 +228,7 @@ namespace MathForGames
             return childRemoved;
         }
 
+        //Called to check if start is true
         public virtual void Start()
         {
             _started = true;
