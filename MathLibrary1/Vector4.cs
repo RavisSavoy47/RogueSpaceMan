@@ -55,6 +55,12 @@ namespace MathLibrary
 
         }
 
+        /// <summary>
+        /// Give you a new vector that point in the multiplied direction
+        /// </summary>
+        /// <param name="lhs"></param>
+        /// <param name="rhs"></param>
+        /// <returns></returns>
         public static Vector4 CrossProduct(Vector4 lhs, Vector4 rhs)
         {
             return new Vector4((lhs.Y * rhs.Z) - (lhs.Z * rhs.Y),

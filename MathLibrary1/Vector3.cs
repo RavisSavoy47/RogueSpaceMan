@@ -53,6 +53,12 @@ namespace MathLibrary
 
         }
 
+        /// <summary>
+        /// Give you a new vector that point in the multiplied direction
+        /// </summary>
+        /// <param name="lhs"></param>
+        /// <param name="rhs"></param>
+        /// <returns></returns>
         public static Vector3 CrossProduct(Vector3 lhs, Vector3 rhs)
         {
             return new Vector3((lhs.Y * rhs.Z) - (lhs.Z * rhs.Y),
@@ -80,7 +86,7 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Adds the x value of the second vector to the first, and adds the y vaqlue to the first
+        /// Adds the x value of the second vector to the first, and adds the y value to the first and adds the z value to the first
         /// </summary>
         /// <param name="lhs">The vector that is increasing</param>
         /// <param name="rhs">The vector used to increadr the 1st vector</param>
@@ -91,7 +97,7 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Subtract the x value of the second vector to the first, and subtracts the y vaqlue to the first
+        /// Subtract the x value of the second vector to the first, and subtracts the y value to the first, and subtracts the z value to the first
         /// </summary>
         /// <param name="lhs">The vector that is being subtracted from</param>
         /// <param name="rhs">The vector used to subtract from the 1st vector</param>
@@ -102,7 +108,7 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Multiplies the vector's x and y values by the scalor
+        /// Multiplies the vector's x, y, and z values by the scalor
         /// </summary>
         /// <param name="lhs">The vector that is being scaled</param>
         /// <param name="scalor">The value to scale the vector by</param>
@@ -112,13 +118,19 @@ namespace MathLibrary
             return new Vector3 { X = lhs.X * rhs, Y = lhs.Y * rhs, Z = lhs.Z * rhs };
         }
 
+        /// <summary>
+        /// Multiplies the scalor by the vector's x, y, and z values
+        /// </summary>
+        /// <param name="rhs"></param>
+        /// <param name="lhs"></param>
+        /// <returns></returns>
         public static Vector3 operator *(float rhs ,Vector3 lhs)
         {
             return new Vector3 { X = lhs.X * rhs, Y = lhs.Y * rhs, Z = lhs.Z * rhs };
         }
 
         /// <summary>
-        /// Divides the vector's x and y values by the scalor
+        /// Divides the vector's x, y, and z values by the scalor
         /// </summary>
         /// <param name="lhs">The vector that is being scaled</param>
         /// <param name="scalor">The value to scale the vector by</param>
@@ -129,22 +141,22 @@ namespace MathLibrary
         }
 
         /// <summary>
-        /// Compares the x and y values of two vectors
+        /// Compares the x, y, and z values of two vectors
         /// </summary>
         /// <param name="lhs">The left side of teh comparison</param>
         /// <param name="rhs">The right side of the comparison</param>
-        /// <returns>True if the x values of both vectors match and the y values match</returns>
+        /// <returns>True if the x, y, z values of both vectors match</returns>
         public static bool operator ==(Vector3 lhs, Vector3 rhs)
         {
             return lhs.X == rhs.X && lhs.Y == rhs.Y && lhs.Z == rhs.Z;
         }
 
         /// <summary>
-        /// Compares the x and y values of two vectors
+        /// Compares the x, y, and z values of two vectors
         /// </summary>
         /// <param name="lhs">The left side of teh comparison</param>
         /// <param name="rhs">the right side of the comparison</param>
-        /// <returns>True if the x values of both vectors don't match and the y values don't match</returns>
+        /// <returns>True if the x, y, and z values of both vectors don't match</returns>
         public static bool operator !=(Vector3 lhs, Vector3 rhs)
         {
             return lhs.X != rhs.X || lhs.Y != rhs.Y || lhs.Z != rhs.Z;
