@@ -10,7 +10,7 @@ You shoot the enemies and kill all them to win.
 - Press the spacebar to shoot rotating bullets
 
 ## How to Download
-- Follow this link ->
+- Follow this link -> https://github.com/RavisSavoy47/RogueSpaceMan/releases/tag/V1.0
 - Unzip the file and run the .exe file
 
 ## Bugs you might find
