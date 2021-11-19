@@ -119,7 +119,7 @@ namespace MathForGames
             player.AddChild(actor2);
 
 
-            Enemy enemy1 = new Enemy(10, 1, 10, 5, 10, 100, player, "Enemy", Shape.SPHERE, 5);
+            Enemy enemy1 = new Enemy(10, 1, 10, 10, 20, 100, player, "Enemy", Shape.SPHERE, 5);
             enemy1.SetScale(1, 1, 1);
             scene.AddActor(enemy1);
             enemy1.SetColor(new Vector4(26, 78, 6, 255));
@@ -128,7 +128,7 @@ namespace MathForGames
             //Giving the ui text the enemy's health
             _enemy1 = enemy1;
 
-            Enemy enemy2 = new Enemy(20, 1, 5, 10, 10, 100, player, "Enemy", Shape.SPHERE, 5);
+            Enemy enemy2 = new Enemy(20, 1, 5, 10, 15, 100, player, "Enemy", Shape.SPHERE, 5);
             enemy2.SetScale(1, 1, 1);
             scene.AddActor(enemy2);
             enemy2.SetColor(new Vector4(26, 78, 6, 255));
