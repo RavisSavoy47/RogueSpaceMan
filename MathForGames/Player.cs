@@ -96,7 +96,15 @@ namespace MathForGames
                 SphereCollider rbulletCollider = new SphereCollider(.5f, rbullet);
                 rbullet.Collider = rbulletCollider;
 
-                AddChild(rbullet);
+                Actor actor1 = new Actor(0, 1, 0, "core", Shape.CUBE);
+                actor1.SetScale(.5f, .5f, .5f);
+                actor1.SetColor(new Vector4(86, 98, 3, 255));
+                currentScene.AddActor(actor1);
+                //Rotates the player so the rotating bullet rotates 
+                actor1.Rotate(0, 5 * deltaTime, 0);
+                //AddChild(actor1);
+
+                actor1.AddChild(rbullet);
 
                 _timer = 0;
             }
