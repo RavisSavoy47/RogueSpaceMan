@@ -51,7 +51,6 @@ namespace MathForGames
             //Rotate by 10 times deltatime
             Rotate(10 * deltaTime, 0, 10 * deltaTime);
             UpdateTransforms();
-
             base.Update(deltaTime, currentScene);
 
             _timer += deltaTime;

@@ -8,6 +8,18 @@ namespace MathLibrary
     {
         public float M00, M01, M02, M10, M11, M12, M20, M21, M22;
 
+        /// <summary>
+        /// The names for each point in the base
+        /// </summary>
+        /// <param name="m00">This is 1</param>
+        /// <param name="m01">This is 0</param>
+        /// <param name="m02">This is 0</param>
+        /// <param name="m10">This is 0</param>
+        /// <param name="m11">This is 1</param>
+        /// <param name="m12">This is 0</param>
+        /// <param name="m20">This is 0</param>
+        /// <param name="m21">This is 0</param>
+        /// <param name="m22">This is 1</param>
         public Matrix3(float m00, float m01, float m02,
                        float m10, float m11, float m12,
                        float m20, float m21, float m22)
@@ -17,6 +29,9 @@ namespace MathLibrary
             M20 = m20; M21 = m21; M22 = m22;
         }
 
+        /// <summary>
+        /// It is the base for the matrix3
+        /// </summary>
         public static Matrix3 Identity
         {
             get
