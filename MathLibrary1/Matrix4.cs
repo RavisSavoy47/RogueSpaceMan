@@ -19,6 +19,9 @@ namespace MathLibrary
             M30 = m30; M31 = m31; M32 = m32; M33 = m33;
         }
 
+        /// <summary>
+        /// It is the base for the matrix4
+        /// </summary>
         public static Matrix4 Identity
         {
             get
